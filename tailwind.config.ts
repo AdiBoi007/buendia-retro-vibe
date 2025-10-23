@@ -132,6 +132,14 @@ export default {
             backgroundPosition: "1000px 0"
           }
         },
+        "rotate-y": {
+          "0%": {
+            transform: "rotateY(0deg)"
+          },
+          "100%": {
+            transform: "rotateY(180deg)"
+          }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -141,6 +149,10 @@ export default {
         "float-delayed": "float-delayed 7s ease-in-out infinite",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
         "shimmer": "shimmer 3s linear infinite",
+        "rotate-y": "rotate-y 1s ease-in-out",
+      },
+      perspective: {
+        '1000': '1000px',
       },
     },
   },
