@@ -24,7 +24,7 @@ export const WaitlistSection = () => {
   };
 
   return (
-    <section className="py-32 px-6 bg-gradient-to-br from-primary via-accent to-muted relative overflow-hidden">
+    <section id="waitlist" className="py-32 px-6 bg-gradient-to-br from-primary via-accent to-muted relative overflow-hidden scroll-mt-20">{/* Added scroll-mt-20 for anchor links */}
       {/* Animated background */}
       <div className="absolute inset-0 opacity-20">
         {[...Array(30)].map((_, i) => (

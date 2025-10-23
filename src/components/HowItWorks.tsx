@@ -28,7 +28,7 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="py-24 px-6 bg-background relative overflow-hidden">
+    <section id="how" className="py-24 px-6 bg-background relative overflow-hidden scroll-mt-20">{/* Added scroll-mt-20 for anchor links */}
       {/* Background decoration */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-muted/20 to-secondary/20 rounded-full blur-3xl" />

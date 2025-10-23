@@ -43,7 +43,7 @@ const features = {
 
 export const FeaturesGrid = () => {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section id="features" className="py-24 px-6 bg-background scroll-mt-20">{/* Added scroll-mt-20 for anchor links */}
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">

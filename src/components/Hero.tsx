@@ -19,7 +19,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-hero-gradient">
+    <section className="relative min-h-screen overflow-hidden bg-hero-gradient pt-20">{/* Added pt-20 for header spacing */}
       {/* Subtle grain overlay */}
       <div className="absolute inset-0 grain pointer-events-none" />
       

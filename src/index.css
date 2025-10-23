@@ -106,7 +106,7 @@ All colors MUST be HSL.
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors;
   }
 
   body {
@@ -115,6 +115,11 @@ All colors MUST be HSL.
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+  }
+
+  /* Smooth theme transitions */
+  html {
+    @apply transition-colors duration-300;
   }
 }
 
