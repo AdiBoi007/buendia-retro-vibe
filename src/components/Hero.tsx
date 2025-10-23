@@ -42,11 +42,6 @@ export const Hero = () => {
       {/* Floating wardrobe cards - background layer */}
       <div className="absolute inset-0 pointer-events-none">
         <WardrobeCard
-          image={outfit1}
-          className="absolute top-20 left-10 rotate-[-8deg] animate-float opacity-50"
-          style={{ animationDelay: "0s" }}
-        />
-        <WardrobeCard
           image={outfit2}
           className="absolute bottom-32 right-20 rotate-[12deg] animate-float-delayed opacity-50"
           style={{ animationDelay: "1s" }}
