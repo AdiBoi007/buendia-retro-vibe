@@ -43,13 +43,11 @@ export const Hero = () => {
       <div className="absolute inset-0 pointer-events-none">
         <WardrobeCard
           image={outfit2}
-          className="absolute bottom-32 right-20 rotate-[12deg] animate-float-delayed opacity-50"
-          style={{ animationDelay: "1s" }}
+          className="absolute bottom-32 right-20 rotate-[12deg] opacity-50"
         />
         <WardrobeCard
           image={outfit3}
-          className="absolute top-1/3 right-12 rotate-[-5deg] animate-float opacity-50"
-          style={{ animationDelay: "2s" }}
+          className="absolute top-1/3 right-12 rotate-[-5deg] opacity-50"
         />
       </div>
 
