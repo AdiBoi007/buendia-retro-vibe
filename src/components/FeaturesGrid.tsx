@@ -90,13 +90,8 @@ export const FeaturesGrid = () => {
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
                         <CardHeader>
-                          <div className="flex items-start justify-between">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
-                              <feature.icon className="w-6 h-6 text-background" />
-                            </div>
-                            <Badge variant="secondary" className="text-xs">
-                              New
-                            </Badge>
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                            <feature.icon className="w-6 h-6 text-background" />
                           </div>
                           <CardTitle className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
                             {feature.title}
