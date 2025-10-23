@@ -44,12 +44,20 @@ export const Hero = () => {
       {/* Floating wardrobe cards - background layer */}
       <div className="absolute inset-0 pointer-events-none">
         <WardrobeCard
+          image={outfit1}
+          className="absolute top-20 left-12 rotate-[-8deg] opacity-40"
+        />
+        <WardrobeCard
           image={outfit2}
           className="absolute bottom-32 right-20 rotate-[12deg] opacity-50"
         />
         <WardrobeCard
           image={outfit3}
           className="absolute top-1/3 right-12 rotate-[-5deg] opacity-50"
+        />
+        <WardrobeCard
+          image={outfit1}
+          className="absolute bottom-40 left-16 rotate-[6deg] opacity-30"
         />
       </div>
 
