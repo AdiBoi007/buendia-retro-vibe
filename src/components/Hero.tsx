@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { MadLibsPrompt } from "./MadLibsPrompt";
 import { WardrobeCard } from "./WardrobeCard";
 import crtMonitor from "@/assets/crt-monitor.jpg";
@@ -56,6 +58,19 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
           <div className="space-y-8 animate-fade-in">
+            {/* Badges above headline */}
+            <div className="flex flex-wrap gap-2">
+              <Badge className="bg-gradient-to-r from-primary to-accent text-background border-0 px-4 py-2 font-display shadow-lg hover:shadow-xl transition-all">
+                ✨ AI-Powered
+              </Badge>
+              <Badge variant="outline" className="border-2 border-primary text-primary bg-primary/10 px-4 py-2 font-display hover:bg-primary/20 transition-all">
+                🎨 Personal Stylist
+              </Badge>
+              <Badge variant="secondary" className="bg-secondary/80 text-foreground px-4 py-2 font-display shadow-md">
+                ⚡ Instant Outfits
+              </Badge>
+            </div>
+
             {/* Main headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Tell me your vibe,<br />
@@ -71,20 +86,37 @@ export const Hero = () => {
             />
 
             {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button
-                onClick={handleStart}
-                className="bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0"
-              >
-                Start →
-              </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-display text-lg px-8 py-6 rounded-full transition-all"
-              >
-                Join waitlist
-              </Button>
-            </div>
+            <TooltipProvider>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={handleStart}
+                      className="bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0"
+                    >
+                      Start →
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Get styled in seconds!</p>
+                  </TooltipContent>
+                </Tooltip>
+                
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-display text-lg px-8 py-6 rounded-full transition-all"
+                    >
+                      Join waitlist
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Be first to know when we launch</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
 
             {/* Tagline */}
             <p className="text-foreground/80 text-lg font-body max-w-md font-medium">

@@ -1,6 +1,8 @@
 import { Brain, Clock, Heart, Shield, Smartphone, Users } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Badge } from "@/components/ui/badge";
 
 const features = {
   ai: [
@@ -81,25 +83,49 @@ export const FeaturesGrid = () => {
             <TabsContent key={key} value={key} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {items.map((feature, index) => (
-                  <Card
-                    key={index}
-                    className="group border-2 border-foreground/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-fade-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <CardHeader>
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <feature.icon className="w-6 h-6 text-background" />
+                  <HoverCard key={index}>
+                    <HoverCardTrigger asChild>
+                      <Card
+                        className="group border-2 border-foreground/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-fade-in cursor-pointer"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <CardHeader>
+                          <div className="flex items-start justify-between">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                              <feature.icon className="w-6 h-6 text-background" />
+                            </div>
+                            <Badge variant="secondary" className="text-xs">
+                              New
+                            </Badge>
+                          </div>
+                          <CardTitle className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
+                            {feature.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription className="font-body text-foreground/70 leading-relaxed">
+                            {feature.description}
+                          </CardDescription>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-card/95 backdrop-blur-md border-2 border-primary/20 shadow-2xl" side="top">
+                      <div className="space-y-2">
+                        <h4 className="font-display text-sm font-semibold text-foreground flex items-center gap-2">
+                          <feature.icon className="w-4 h-4 text-primary" />
+                          Why it matters
+                        </h4>
+                        <p className="text-sm text-foreground/70 font-body leading-relaxed">
+                          {feature.title === "Clueless-Level Intuition" && "No more endless scrolling through your closet. Buendía knows your style DNA and serves up looks that feel authentically you."}
+                          {feature.title === "Chat, Don't Click" && "Style advice should feel like texting a friend, not filling out a tax form. Just vibe with Buendía naturally."}
+                          {feature.title === "Your Closet, Curated" && "Stop buying clothes because you forgot what you own. See your entire wardrobe at a glance and fall in love with it again."}
+                          {feature.title === "5-Second Outfits" && "Life's too short to spend 20 minutes staring at your closet. Get dressed with confidence, every single time."}
+                          {feature.title === "Your Data, Your Control" && "Your wardrobe is personal. We treat it with respect, keeping everything private and secure - always."}
+                          {feature.title === "Evolves With You" && "Your style changes, seasons change, trends change. Buendía adapts to all of it, getting smarter with every outfit."}
+                        </p>
                       </div>
-                      <CardTitle className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
-                        {feature.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="font-body text-foreground/70 leading-relaxed">
-                        {feature.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
+                    </HoverCardContent>
+                  </HoverCard>
                 ))}
               </div>
             </TabsContent>
