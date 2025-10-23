@@ -108,7 +108,7 @@ export const Hero = () => {
                 <img
                   src={crtMonitor}
                   alt="Retro computer wardrobe interface"
-                  className="w-full h-auto transform group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto"
                 />
                 {/* Scanline overlay */}
                 <div className="absolute inset-0 pointer-events-none opacity-20" style={{
