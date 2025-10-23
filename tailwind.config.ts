@@ -69,7 +69,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       backgroundImage: {
-        'hero-gradient': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 100%)',
+        'hero-gradient': 'linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 40%, hsl(var(--muted)) 100%)',
         'button-gradient': 'linear-gradient(45deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',
         'glow-radial': 'radial-gradient(circle, hsl(var(--cream)) 0%, transparent 70%)',
       },
