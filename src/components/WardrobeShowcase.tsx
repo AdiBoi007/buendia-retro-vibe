@@ -33,16 +33,17 @@ export const WardrobeShowcase = () => {
         </div>
 
         {/* Wardrobe doors animation */}
-        <div className="relative max-w-5xl mx-auto h-[600px] perspective-1000">
-          <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative max-w-5xl mx-auto h-[600px]">
+          <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: '1500px' }}>
             {/* Left door */}
             <div
-              className={`absolute left-0 w-1/2 h-full bg-gradient-to-br from-foreground/90 to-foreground/70 border-4 border-cream rounded-l-3xl shadow-2xl transition-all duration-1000 origin-left ${
-                isOpen ? "rotate-y-[-120deg] opacity-50" : "rotate-y-0"
-              }`}
+              className="absolute left-0 w-1/2 h-full bg-gradient-to-br from-foreground/90 to-foreground/70 border-4 border-cream rounded-l-3xl shadow-2xl transition-all duration-1000"
               style={{
-                transformStyle: "preserve-3d",
-                backfaceVisibility: "hidden"
+                transformOrigin: 'left center',
+                transform: isOpen ? 'rotateY(-120deg)' : 'rotateY(0deg)',
+                transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden',
+                opacity: isOpen ? 0.5 : 1
               }}
             >
               <div className="absolute top-1/2 right-8 w-12 h-2 bg-cream rounded-full -translate-y-1/2" />
@@ -53,12 +54,13 @@ export const WardrobeShowcase = () => {
 
             {/* Right door */}
             <div
-              className={`absolute right-0 w-1/2 h-full bg-gradient-to-bl from-foreground/90 to-foreground/70 border-4 border-cream rounded-r-3xl shadow-2xl transition-all duration-1000 origin-right ${
-                isOpen ? "rotate-y-[120deg] opacity-50" : "rotate-y-0"
-              }`}
+              className="absolute right-0 w-1/2 h-full bg-gradient-to-bl from-foreground/90 to-foreground/70 border-4 border-cream rounded-r-3xl shadow-2xl transition-all duration-1000"
               style={{
-                transformStyle: "preserve-3d",
-                backfaceVisibility: "hidden"
+                transformOrigin: 'right center',
+                transform: isOpen ? 'rotateY(120deg)' : 'rotateY(0deg)',
+                transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden',
+                opacity: isOpen ? 0.5 : 1
               }}
             >
               <div className="absolute top-1/2 left-8 w-12 h-2 bg-cream rounded-full -translate-y-1/2" />
