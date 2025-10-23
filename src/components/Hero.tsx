@@ -66,19 +66,6 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
           <div className="space-y-8 animate-fade-in">
-            {/* Badges above headline */}
-            <div className="flex flex-wrap gap-2">
-              <Badge className="bg-gradient-to-r from-primary to-accent text-background border-0 px-4 py-2 font-display shadow-lg hover:shadow-xl transition-all">
-                ✨ AI-Powered
-              </Badge>
-              <Badge variant="outline" className="border-2 border-primary text-primary bg-primary/10 px-4 py-2 font-display hover:bg-primary/20 transition-all">
-                🎨 Personal Stylist
-              </Badge>
-              <Badge variant="secondary" className="bg-secondary/80 text-foreground px-4 py-2 font-display shadow-md">
-                ⚡ Instant Outfits
-              </Badge>
-            </div>
-
             {/* Main headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               Tell me your vibe,<br />
