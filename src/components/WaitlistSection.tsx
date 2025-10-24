@@ -24,10 +24,11 @@ export const WaitlistSection = () => {
   };
 
   return (
-    <section id="waitlist" className="py-32 px-6 relative overflow-hidden scroll-mt-20 bg-gradient-to-br from-primary via-accent to-secondary">
+    <section id="waitlist" className="py-32 px-6 relative overflow-hidden scroll-mt-20 bg-gradient-to-br from-primary via-accent to-secondary vignette">
       {/* Retro grain overlay */}
-      <div className="absolute inset-0 grain pointer-events-none opacity-60" />
-      <div className="absolute inset-0 scanlines pointer-events-none opacity-30" />
+      <div className="absolute inset-0 grain pointer-events-none opacity-80" />
+      <div className="absolute inset-0 scanlines pointer-events-none opacity-50" />
+      <div className="absolute inset-0 vhs-tracking pointer-events-none opacity-20" />
       
       {/* Animated background particles */}
       <div className="absolute inset-0 opacity-20">
@@ -49,15 +50,15 @@ export const WaitlistSection = () => {
         <div className="max-w-4xl mx-auto animate-fade-in">
           {/* Retro sticker badge */}
           <div className="flex justify-center mb-8">
-            <div className="bg-cream text-foreground px-6 py-3 rounded-full font-display text-sm font-bold shadow-xl rotate-[-2deg] border-4 border-foreground/20 inline-block">
+            <div className="bg-cream text-foreground px-6 py-3 rounded-full font-display text-sm font-bold shadow-xl rotate-[-2deg] border-4 border-foreground retro-pulse inline-block">
               EXCLUSIVE ACCESS
             </div>
           </div>
           
-          <h2 className="font-display text-5xl md:text-7xl font-bold text-background mb-6 leading-tight text-center">
+          <h2 className="font-display text-5xl md:text-7xl font-bold text-background mb-6 leading-tight text-center chromatic">
             Don't sleep on this.
             <br />
-            <span className="italic text-6xl md:text-8xl">Join the waitlist.</span>
+            <span className="italic text-6xl md:text-8xl retro-border inline-block px-4 py-2 rotate-[1deg] bg-background/10">Join the waitlist.</span>
           </h2>
           
           <p className="text-background/90 text-xl md:text-2xl font-body mb-12 max-w-2xl mx-auto text-center leading-relaxed">
@@ -69,8 +70,8 @@ export const WaitlistSection = () => {
           </p>
 
           {/* Waitlist form card */}
-          <div className="bg-background/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-foreground/20 max-w-2xl mx-auto paper-texture relative">
-            <div className="absolute -top-4 -right-4 bg-accent text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl rotate-12 border-2 border-foreground/20">
+          <div className="bg-background/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border-8 border-foreground max-w-2xl mx-auto paper-texture relative retro-border">
+            <div className="absolute -top-4 -right-4 bg-accent text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl rotate-12 border-4 border-foreground glow">
               Early Bird 🐦
             </div>
             

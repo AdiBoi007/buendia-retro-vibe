@@ -68,9 +68,9 @@ export const Hero = () => {
           {/* Left side - Hero content */}
           <div className="space-y-8 animate-fade-in">
             {/* Main headline */}
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight chromatic">
               Tell me your vibe,<br />
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent retro-border inline-block px-4 py-2 rotate-[-1deg]">
                 I build the fit.
               </span>
             </h1>
@@ -132,23 +132,29 @@ export const Hero = () => {
               <div className="absolute -inset-8 bg-gradient-to-br from-primary/30 via-accent/30 to-muted/30 blur-3xl rounded-3xl opacity-60" />
               
               {/* CRT Monitor */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-foreground/10">
-                <img
-                  src={styleAnimation}
-                  alt="Style animation"
-                  className="w-full h-auto"
-                />
-                {/* Scanline overlay */}
-                <div className="absolute inset-0 pointer-events-none opacity-20" style={{
-                  backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)'
-                }} />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-foreground retro-pulse polaroid">
+                <div className="relative vignette">
+                  <img
+                    src={styleAnimation}
+                    alt="Style animation"
+                    className="w-full h-auto"
+                  />
+                  {/* Enhanced scanline overlay */}
+                  <div className="absolute inset-0 pointer-events-none scanlines opacity-40" />
+                  {/* VHS tracking lines */}
+                  <div className="absolute inset-0 pointer-events-none vhs-tracking opacity-30" />
+                  {/* Chromatic aberration on corners */}
+                  <div className="absolute inset-0 pointer-events-none" style={{
+                    background: 'radial-gradient(circle at 0% 0%, rgba(233, 79, 72, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(181, 197, 226, 0.1) 0%, transparent 50%)'
+                  }} />
+                </div>
               </div>
 
-              {/* Decorative sticker badges */}
-              <div className="absolute -top-4 -right-4 bg-accent text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl rotate-12 border-2 border-foreground/20">
+              {/* Decorative sticker badges - retro style */}
+              <div className="absolute -top-4 -right-4 bg-accent text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl rotate-12 border-4 border-foreground retro-pulse">
                 retro-paper vibes ✨
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-secondary text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl -rotate-6 border-2 border-foreground/20">
+              <div className="absolute -bottom-4 -left-4 bg-secondary text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl -rotate-6 border-4 border-foreground glow">
                 AI stylist 💄
               </div>
             </div>
