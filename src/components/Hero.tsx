@@ -126,8 +126,8 @@ export const Hero = () => {
           </div>
 
           {/* Right side - Retro CRT Monitor */}
-          <div className="relative animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="relative group">
+          <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.3s" }}>
+            <div className="relative group max-w-md mx-auto lg:mx-0">
               {/* Glow effect behind monitor */}
               <div className="absolute -inset-8 bg-gradient-to-br from-primary/30 via-accent/30 to-muted/30 blur-3xl rounded-3xl opacity-60" />
               
