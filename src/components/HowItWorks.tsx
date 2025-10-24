@@ -28,10 +28,11 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how" className="py-24 px-6 bg-background relative overflow-hidden scroll-mt-20">{/* Added scroll-mt-20 for anchor links */}
-      {/* Background decoration */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-muted/20 to-secondary/20 rounded-full blur-3xl" />
+    <section id="how" className="py-24 px-6 bg-gradient-to-br from-background via-muted/10 to-background relative overflow-hidden scroll-mt-20">
+      {/* Enhanced background decoration */}
+      <div className="absolute inset-0 grain pointer-events-none opacity-20" />
+      <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-accent/30 to-primary/30 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-muted/30 to-secondary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-in">
@@ -54,11 +55,12 @@ export const HowItWorks = () => {
           {steps.map((step, index) => (
             <Card
               key={step.number}
-              className="group relative overflow-hidden border-2 border-foreground/10 hover:border-foreground/30 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 bg-card animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="group relative overflow-hidden border-4 border-foreground/10 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 bg-card/80 backdrop-blur-sm animate-slide-up retro-pulse"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
               {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-15 transition-opacity duration-500 shimmer`} />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-bl-full opacity-50" />
               
               <CardHeader className="relative z-10">
                 <div className="flex items-start justify-between mb-4">

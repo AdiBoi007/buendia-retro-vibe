@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Progress } from "@/components/ui/progress";
 import { MadLibsPrompt } from "./MadLibsPrompt";
 import { WardrobeCard } from "./WardrobeCard";
-import crtMonitor from "@/assets/crt-monitor.jpg";
+import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
 import styleAnimation from "@/assets/style-animation.gif";
+import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
   const [selectedPrompt, setSelectedPrompt] = useState({
@@ -22,9 +24,17 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-hero-gradient pt-20">{/* Added pt-20 for header spacing */}
-      {/* Subtle grain overlay */}
-      <div className="absolute inset-0 grain pointer-events-none" />
+    <section className="relative min-h-screen overflow-hidden pt-20">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-hero-gradient" />
+      
+      {/* Hero background image with overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+      </div>
+      
+      {/* Grain overlay */}
+      <div className="absolute inset-0 grain pointer-events-none opacity-40" />
       
       {/* Floating dust particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -67,10 +77,16 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
           <div className="space-y-8 animate-fade-in">
+            {/* Beta badge */}
+            <Badge className="mb-6 bg-gradient-to-r from-primary to-accent text-background border-0 px-6 py-2 text-sm font-display shadow-lg animate-bounce-in glow">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Now in Private Beta
+            </Badge>
+
             {/* Main headline */}
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight chromatic">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-reveal">
               Tell me your vibe,<br />
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent retro-border inline-block px-4 py-2 rotate-[-1deg]">
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent retro-border inline-block px-4 py-2 rotate-[-1deg] chromatic">
                 I build the fit.
               </span>
             </h1>
@@ -88,12 +104,15 @@ export const Hero = () => {
                   <TooltipTrigger asChild>
                     <Button
                       onClick={handleStart}
-                      className="bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-8 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0"
+                      size="lg"
+                      className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-8 py-7 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0 retro-pulse"
                     >
-                      Start →
+                      <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                      Get Started
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent className="bg-foreground text-background border-2 border-primary">
                     <p>Get styled in seconds!</p>
                   </TooltipContent>
                 </Tooltip>
@@ -102,17 +121,46 @@ export const Hero = () => {
                   <TooltipTrigger asChild>
                     <Button
                       variant="outline"
-                      className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background font-display text-lg px-8 py-6 rounded-full transition-all"
+                      size="lg"
+                      className="border-3 border-foreground text-foreground hover:bg-foreground hover:text-background font-display text-lg px-8 py-7 rounded-full transition-all hover:scale-105"
                     >
-                      Join waitlist
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Join Waitlist
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent className="bg-foreground text-background border-2 border-accent">
                     <p>Be first to know when we launch</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
             </TooltipProvider>
+
+            {/* Social proof */}
+            <div className="flex items-center gap-4 pt-6 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+              <div className="flex -space-x-2">
+                {["SC", "MJ", "ER", "AK"].map((initial, i) => (
+                  <div
+                    key={i}
+                    className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent border-3 border-background flex items-center justify-center text-background font-display text-xs font-bold"
+                    style={{ zIndex: 4 - i }}
+                  >
+                    {initial}
+                  </div>
+                ))}
+              </div>
+              <p className="text-foreground/70 text-sm font-body">
+                Join <span className="font-bold text-foreground">12,500+</span> beta users
+              </p>
+            </div>
+
+            {/* Progress indicator */}
+            <div className="space-y-2 pt-6 animate-slide-up" style={{ animationDelay: "0.5s" }}>
+              <div className="flex justify-between text-sm font-body text-foreground/70">
+                <span>Waitlist filling up</span>
+                <span>73%</span>
+              </div>
+              <Progress value={73} className="h-2" />
+            </div>
 
             {/* Tagline */}
             <p className="text-foreground/80 text-lg font-body max-w-md font-medium">
@@ -128,8 +176,9 @@ export const Hero = () => {
           {/* Right side - Retro CRT Monitor */}
           <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.3s" }}>
             <div className="relative group max-w-md mx-auto lg:mx-0">
-              {/* Glow effect behind monitor */}
-              <div className="absolute -inset-8 bg-gradient-to-br from-primary/30 via-accent/30 to-muted/30 blur-3xl rounded-3xl opacity-60" />
+              {/* Enhanced glow effect behind monitor */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-primary/40 via-accent/40 to-muted/40 blur-3xl rounded-3xl opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/20 to-muted/20 blur-2xl rounded-3xl animate-pulse" />
               
               {/* CRT Monitor */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-foreground retro-pulse polaroid">

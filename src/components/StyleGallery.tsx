@@ -5,13 +5,15 @@ import { Card } from "@/components/ui/card";
 
 export const StyleGallery = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-muted via-background to-secondary relative overflow-hidden">
-      <div className="absolute inset-0 grain pointer-events-none opacity-20" />
+    <section className="py-24 px-6 bg-gradient-to-br from-muted/30 via-background to-secondary/30 relative overflow-hidden">
+      <div className="absolute inset-0 grain pointer-events-none opacity-30" />
+      <div className="absolute top-40 left-20 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-accent/20 to-muted/20 rounded-full blur-3xl" />
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Your style, <span className="text-primary">visualized.</span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 chromatic">
+            Your style, <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">visualized.</span>
           </h2>
           <p className="text-foreground/70 font-body text-lg max-w-2xl mx-auto">
             From mood boards to your closet, we bring your fashion vision to life.
@@ -20,7 +22,7 @@ export const StyleGallery = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Fashion Collage Card */}
-          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse">
             <div className="relative overflow-hidden">
               <img
                 src={fashionCollage}
@@ -41,7 +43,7 @@ export const StyleGallery = () => {
           </Card>
 
           {/* Polaroid Style Card */}
-          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-accent/50 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse" style={{ animationDelay: "0.1s" }}>
             <div className="relative overflow-hidden">
               <img
                 src={polaroidStyle}
@@ -62,7 +64,7 @@ export const StyleGallery = () => {
           </Card>
 
           {/* Wardrobe Rack Card */}
-          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-secondary/50 transition-all duration-300 hover:shadow-2xl hover:scale-105 md:col-span-2 lg:col-span-1">
+          <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 md:col-span-2 lg:col-span-1 animate-slide-up retro-pulse" style={{ animationDelay: "0.2s" }}>
             <div className="relative overflow-hidden">
               <img
                 src={wardrobeRack}
