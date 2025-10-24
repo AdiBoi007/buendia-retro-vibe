@@ -8,6 +8,7 @@ import crtMonitor from "@/assets/crt-monitor.jpg";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
+import styleAnimation from "@/assets/style-animation.gif";
 
 export const Hero = () => {
   const [selectedPrompt, setSelectedPrompt] = useState({
@@ -133,8 +134,8 @@ export const Hero = () => {
               {/* CRT Monitor */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-foreground/10">
                 <img
-                  src={crtMonitor}
-                  alt="Retro computer wardrobe interface"
+                  src={styleAnimation}
+                  alt="Style animation"
                   className="w-full h-auto"
                 />
                 {/* Scanline overlay */}
