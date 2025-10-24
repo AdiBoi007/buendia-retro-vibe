@@ -50,7 +50,7 @@ export const WaitlistSection = () => {
           {/* Retro sticker badge */}
           <div className="flex justify-center mb-8">
             <div className="bg-cream text-foreground px-6 py-3 rounded-full font-display text-sm font-bold shadow-xl rotate-[-2deg] border-4 border-foreground/20 inline-block">
-              ⭐ EXCLUSIVE ACCESS ⭐
+              EXCLUSIVE ACCESS
             </div>
           </div>
           
