@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light" storageKey="buendia-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="buendia-ui-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
