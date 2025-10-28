@@ -1,32 +1,125 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Sparkles } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { Badge } from "@/components/ui/badge";
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-foreground/10">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-            <span className="font-display text-background font-bold text-lg">B</span>
+    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-xl z-50 border-b border-foreground/10 shadow-sm">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-12">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md">
+                <Sparkles className="w-5 h-5 text-background" />
+              </div>
+              <h1 className="font-display text-2xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                buendía
+              </h1>
+              <Badge className="hidden sm:inline-flex bg-accent/10 text-accent border-accent/20 text-xs font-display">
+                Beta
+              </Badge>
+            </div>
+            <nav className="hidden lg:flex gap-8">
+              <button 
+                onClick={() => scrollToSection('features')}
+                className="text-foreground/70 hover:text-foreground transition-colors font-display text-sm font-medium hover:scale-105 transition-transform"
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-foreground/70 hover:text-foreground transition-colors font-display text-sm font-medium hover:scale-105 transition-transform"
+              >
+                How it Works
+              </button>
+              <button 
+                onClick={() => scrollToSection('pricing')}
+                className="text-foreground/70 hover:text-foreground transition-colors font-display text-sm font-medium hover:scale-105 transition-transform"
+              >
+                Pricing
+              </button>
+              <button 
+                onClick={() => scrollToSection('faq')}
+                className="text-foreground/70 hover:text-foreground transition-colors font-display text-sm font-medium hover:scale-105 transition-transform"
+              >
+                FAQ
+              </button>
+            </nav>
           </div>
-          <span className="font-display text-2xl font-bold text-foreground">Buendía</span>
+
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden md:inline-flex border-2 border-foreground/20 hover:border-primary/50 font-display transition-all hover:scale-105"
+            >
+              Sign In
+            </Button>
+            <Button
+              size="sm"
+              className="hidden md:inline-flex bg-gradient-to-r from-primary to-accent text-background border-0 font-display shadow-md hover:shadow-lg transition-all hover:scale-105"
+            >
+              Get Started
+            </Button>
+            <button
+              className="lg:hidden text-foreground p-2 hover:bg-secondary/50 rounded-lg transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        {/* Nav + Theme Toggle */}
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center gap-6 font-body text-sm">
-            <a href="#how" className="text-foreground/70 hover:text-foreground transition-colors">
-              How It Works
-            </a>
-            <a href="#features" className="text-foreground/70 hover:text-foreground transition-colors">
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <nav className="lg:hidden pt-6 pb-4 flex flex-col gap-4 animate-fade-in border-t border-foreground/10 mt-4">
+            <button 
+              onClick={() => scrollToSection('features')}
+              className="text-foreground/70 hover:text-foreground transition-colors font-display text-left py-2"
+            >
               Features
-            </a>
-            <a href="#waitlist" className="text-foreground/70 hover:text-foreground transition-colors">
-              Join Waitlist
-            </a>
+            </button>
+            <button 
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-foreground/70 hover:text-foreground transition-colors font-display text-left py-2"
+            >
+              How it Works
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')}
+              className="text-foreground/70 hover:text-foreground transition-colors font-display text-left py-2"
+            >
+              Pricing
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')}
+              className="text-foreground/70 hover:text-foreground transition-colors font-display text-left py-2"
+            >
+              FAQ
+            </button>
+            <div className="flex flex-col gap-2 pt-4 border-t border-foreground/10">
+              <Button variant="outline" size="sm" className="border-2 font-display">
+                Sign In
+              </Button>
+              <Button size="sm" className="bg-gradient-to-r from-primary to-accent text-background border-0 font-display">
+                Get Started
+              </Button>
+            </div>
           </nav>
-          <ThemeToggle />
-        </div>
+        )}
       </div>
     </header>
   );

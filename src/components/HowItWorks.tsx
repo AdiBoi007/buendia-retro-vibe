@@ -28,7 +28,7 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section id="how" className="py-24 px-6 bg-gradient-to-br from-background via-muted/10 to-background relative overflow-hidden scroll-mt-20">
+    <section id="how-it-works" className="py-24 px-6 bg-gradient-to-br from-background via-muted/10 to-background relative overflow-hidden scroll-mt-20">
       {/* Enhanced background decoration */}
       <div className="absolute inset-0 grain pointer-events-none opacity-20" />
       <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-accent/30 to-primary/30 rounded-full blur-3xl animate-pulse" />

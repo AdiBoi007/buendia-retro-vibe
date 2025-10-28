@@ -2,9 +2,11 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { StatsSection } from "@/components/StatsSection";
+import { BentoGrid } from "@/components/BentoGrid";
 import { WardrobeShowcase } from "@/components/WardrobeShowcase";
 import { StyleGallery } from "@/components/StyleGallery";
 import { FeaturesGrid } from "@/components/FeaturesGrid";
+import { PricingSection } from "@/components/PricingSection";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { FAQSection } from "@/components/FAQSection";
 import { WaitlistSection } from "@/components/WaitlistSection";
@@ -15,11 +17,12 @@ const Index = () => {
     <main className="relative">
       <Header />
       <Hero />
-      <HowItWorks />
       <StatsSection />
+      <HowItWorks />
+      <BentoGrid />
       <StyleGallery />
-      <WardrobeShowcase />
       <FeaturesGrid />
+      <PricingSection />
       <TestimonialCarousel />
       <FAQSection />
       <WaitlistSection />

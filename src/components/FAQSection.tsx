@@ -35,7 +35,7 @@ const faqs = [
 
 export const FAQSection = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-background via-muted/20 to-background relative overflow-hidden">
+    <section id="faq" className="py-24 px-6 bg-gradient-to-br from-background via-muted/20 to-background relative overflow-hidden scroll-mt-20">
       {/* Background decoration */}
       <div className="absolute top-40 left-10 w-72 h-72 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-accent/10 to-muted/20 rounded-full blur-3xl" />
