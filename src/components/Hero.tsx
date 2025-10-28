@@ -2,12 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 import { MadLibsPrompt } from "./MadLibsPrompt";
 import { WardrobeCard } from "./WardrobeCard";
-import { ArrowRight, Sparkles, Zap, Users, TrendingUp, Heart } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Users, TrendingUp, Heart, Clock, ShoppingBag, Star, Award, CheckCircle2, Shirt } from "lucide-react";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
@@ -23,10 +27,45 @@ export const Hero = () => {
   });
 
   const testimonials = [
-    { name: "Sarah Chen", role: "Fashion Blogger", initial: "SC", avatar: "", quote: "Changed my mornings completely" },
-    { name: "Mike Jordan", role: "Creative Director", initial: "MJ", avatar: "", quote: "Finally, my closet makes sense" },
-    { name: "Emma Rodriguez", role: "Stylist", initial: "ER", avatar: "", quote: "This is the future of styling" },
-    { name: "Alex Kim", role: "Entrepreneur", initial: "AK", avatar: "", quote: "Saves me 2 hours every week" }
+    { 
+      name: "Sarah Chen", 
+      role: "Fashion Blogger", 
+      initial: "SC", 
+      avatar: "", 
+      quote: "Went from 'I have nothing to wear' to 'OMG I forgot I had this!' in like 2 days",
+      stat: "87 new outfits discovered"
+    },
+    { 
+      name: "Mike Jordan", 
+      role: "Creative Director", 
+      initial: "MJ", 
+      avatar: "", 
+      quote: "My closet used to stress me out. Now it's literally my favorite place",
+      stat: "Saves 2.5 hrs/week"
+    },
+    { 
+      name: "Emma Rodriguez", 
+      role: "Professional Stylist", 
+      initial: "ER", 
+      avatar: "", 
+      quote: "I do this for a living and I'm mind-blown. The AI gets style better than most humans",
+      stat: "Uses it for clients"
+    },
+    { 
+      name: "Alex Kim", 
+      role: "Tech Entrepreneur", 
+      initial: "AK", 
+      avatar: "", 
+      quote: "Finally stopped wearing the same 3 outfits on repeat. Game changer",
+      stat: "3.2x more variety"
+    }
+  ];
+
+  const stats = [
+    { icon: Users, value: "12.5K+", label: "Happy Users", color: "text-primary" },
+    { icon: TrendingUp, value: "94%", label: "Satisfaction", color: "text-accent" },
+    { icon: Clock, value: "2.5hrs", label: "Saved Weekly", color: "text-primary" },
+    { icon: Shirt, value: "3.2x", label: "More Outfits", color: "text-accent" }
   ];
 
   return (
@@ -83,42 +122,91 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
           <div className="space-y-6 animate-fade-in">
-            {/* Beta badge with hover effect */}
-            <HoverCard>
-              <HoverCardTrigger>
-                <Badge className="mb-4 bg-gradient-to-r from-primary via-accent to-primary text-background border-0 px-6 py-2.5 text-sm font-display shadow-xl animate-bounce-in cursor-pointer hover:scale-105 transition-transform">
-                  <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
-                  Join 12,500+ Beta Users
-                </Badge>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-80 border-2 border-primary/20">
-                <div className="space-y-2">
-                  <h4 className="font-display font-semibold">Early Access Benefits</h4>
-                  <p className="text-sm text-muted-foreground">Get lifetime discounts, priority support, and exclusive features</p>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+            {/* Beta badge with enhanced hover */}
+            <TooltipProvider>
+              <HoverCard>
+                <HoverCardTrigger>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Badge className="mb-4 bg-gradient-to-r from-primary via-accent to-primary text-background border-0 px-6 py-2.5 text-sm font-display shadow-xl animate-bounce-in cursor-pointer hover:scale-105 transition-all duration-300 group">
+                        <Sparkles className="w-4 h-4 mr-2 animate-pulse group-hover:rotate-12 transition-transform" />
+                        Join 12,500+ Beta Users
+                        <Award className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </Badge>
+                    </TooltipTrigger>
+                    <TooltipContent side="bottom" className="bg-gradient-to-r from-primary to-accent text-background border-0">
+                      <p className="font-display">Click for exclusive perks! 🎁</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-96 border-2 border-primary/20 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Award className="w-5 h-5 text-primary" />
+                      <h4 className="font-display font-bold text-lg">Early Access Perks</h4>
+                    </div>
+                    <Separator />
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <p className="text-sm"><strong>50% off lifetime</strong> - Lock in beta pricing forever</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <p className="text-sm"><strong>Priority support</strong> - Direct line to our team</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <p className="text-sm"><strong>Exclusive features</strong> - Try new AI models first</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <p className="text-sm"><strong>Beta community</strong> - Shape the future with us</p>
+                      </div>
+                    </div>
+                    <Progress value={67} className="h-2" />
+                    <p className="text-xs text-muted-foreground text-center">
+                      67% of beta slots filled • Join before they're gone
+                    </p>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </TooltipProvider>
 
-            {/* Main headline - improved typography */}
+            {/* Main headline - ultra premium */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] text-reveal">
-              Your vibe.
-              <br />
-              Our{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent inline-block animate-shimmer bg-[length:200%_100%]">
-                AI magic.
+              <span className="inline-block hover:scale-105 transition-transform cursor-default">
+                Your vibe.
               </span>
               <br />
-              <span className="relative inline-block mt-2">
-                <span className="retro-border inline-block px-6 py-3 rotate-[-1deg] bg-gradient-to-r from-primary/10 to-accent/10">
+              <span className="inline-block hover:scale-105 transition-transform cursor-default">
+                Our{" "}
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
+                    AI magic.
+                  </span>
+                  <Sparkles className="w-8 h-8 md:w-10 md:h-10 absolute -top-2 -right-8 md:-right-10 text-accent animate-pulse" />
+                </span>
+              </span>
+              <br />
+              <span className="relative inline-block mt-2 group">
+                <span className="retro-border inline-block px-6 py-3 rotate-[-1deg] bg-gradient-to-r from-primary/10 to-accent/10 group-hover:rotate-0 transition-transform">
                   Perfect fits.
                 </span>
+                <Heart className="w-6 h-6 absolute -bottom-1 -right-6 text-primary fill-primary animate-pulse opacity-80" />
               </span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-foreground/70 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
-              Stop overthinking what to wear. Your AI stylist knows your closet better than you do.
-            </p>
+            {/* Subheadline with personality */}
+            <div className="space-y-2">
+              <p className="text-foreground/80 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
+                Stop the morning outfit panic. Your AI stylist already knows what you'll love—
+                <span className="text-primary font-semibold"> before you do.</span>
+              </p>
+              <p className="text-foreground/60 text-base md:text-lg font-body max-w-xl">
+                Real talk: getting dressed shouldn't feel like a chore. Let's make it fun again.
+              </p>
+            </div>
 
             {/* Mad Libs interactive prompt */}
             <MadLibsPrompt 
@@ -127,124 +215,259 @@ export const Hero = () => {
             />
 
 
-            {/* CTA buttons - improved */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button
-                onClick={() => navigate('/signup')}
-                size="lg"
-                className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-accent/50 transition-all hover:scale-105 border-0 relative overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center">
-                  <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                  Get Started Free
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Button>
-              
-              <Button
-                onClick={() => navigate('/how-it-works')}
-                variant="outline"
-                size="lg"
-                className="border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background font-display text-lg px-10 py-7 rounded-full transition-all hover:scale-105 group"
-              >
-                <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                See How It Works
-              </Button>
-            </div>
+            {/* CTA buttons - premium with tooltips */}
+            <TooltipProvider>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={() => navigate('/signup')}
+                      size="lg"
+                      className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-accent/50 transition-all hover:scale-105 border-0 relative overflow-hidden"
+                    >
+                      <span className="relative z-10 flex items-center">
+                        <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                        Start Free Trial
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" className="bg-gradient-to-r from-primary to-accent text-background border-0">
+                    <p className="font-display">No credit card required • 7 days free ✨</p>
+                  </TooltipContent>
+                </Tooltip>
+                
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={() => navigate('/how-it-works')}
+                      variant="outline"
+                      size="lg"
+                      className="border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background font-display text-lg px-10 py-7 rounded-full transition-all hover:scale-105 group bg-background/50 backdrop-blur-sm"
+                    >
+                      <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                      See the Magic
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>Watch a 60-second demo</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
 
-            {/* Social proof with avatars - upgraded */}
-            <div className="pt-6 animate-slide-up space-y-4" style={{ animationDelay: "0.3s" }}>
-              <div className="flex items-center gap-6">
-                <div className="flex -space-x-3">
-                  {testimonials.map((person, i) => (
-                    <HoverCard key={i}>
-                      <HoverCardTrigger>
-                        <Avatar className="w-12 h-12 border-3 border-background cursor-pointer hover:scale-110 hover:z-10 transition-all">
-                          <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-background font-display font-bold">
-                            {person.initial}
-                          </AvatarFallback>
-                        </Avatar>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="w-80">
-                        <div className="space-y-2">
-                          <h4 className="font-display font-semibold">{person.name}</h4>
-                          <p className="text-sm text-muted-foreground">{person.role}</p>
-                          <p className="text-sm italic">"{person.quote}"</p>
-                        </div>
-                      </HoverCardContent>
-                    </HoverCard>
-                  ))}
-                </div>
-                <div>
-                  <p className="text-foreground font-display font-semibold flex items-center gap-2">
-                    <Heart className="w-4 h-4 text-primary fill-primary" />
-                    12,500+ happy users
-                  </p>
-                  <p className="text-foreground/60 text-sm">⭐️ 4.9/5 average rating</p>
+            {/* Social proof - ultra premium */}
+            <div className="pt-6 animate-slide-up space-y-6" style={{ animationDelay: "0.3s" }}>
+              {/* Stats cards grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {stats.map((stat, i) => (
+                  <TooltipProvider key={i}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Card className="border-2 border-primary/10 bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm hover:scale-105 transition-all cursor-default group">
+                          <CardContent className="p-4 text-center space-y-1">
+                            <stat.icon className={`w-5 h-5 mx-auto mb-2 ${stat.color} group-hover:scale-110 transition-transform`} />
+                            <p className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                              {stat.value}
+                            </p>
+                            <p className="text-xs text-muted-foreground font-display">
+                              {stat.label}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="font-display">Real user data • Updated daily</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </div>
+
+              {/* Testimonials with enhanced cards */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-4">
+                    {testimonials.map((person, i) => (
+                      <HoverCard key={i} openDelay={200}>
+                        <HoverCardTrigger>
+                          <Avatar className="w-14 h-14 border-4 border-background cursor-pointer hover:scale-125 hover:z-10 transition-all shadow-lg">
+                            <AvatarFallback className="bg-gradient-to-br from-primary via-accent to-primary text-background font-display font-bold text-lg">
+                              {person.initial}
+                            </AvatarFallback>
+                          </Avatar>
+                        </HoverCardTrigger>
+                        <HoverCardContent className="w-96 border-2 border-primary/20 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
+                          <div className="space-y-3">
+                            <div className="flex items-start justify-between">
+                              <div>
+                                <h4 className="font-display font-bold text-lg">{person.name}</h4>
+                                <p className="text-sm text-muted-foreground">{person.role}</p>
+                              </div>
+                              <div className="flex gap-0.5">
+                                {[...Array(5)].map((_, i) => (
+                                  <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                                ))}
+                              </div>
+                            </div>
+                            <Separator />
+                            <p className="text-sm leading-relaxed italic text-foreground/90">
+                              "{person.quote}"
+                            </p>
+                            <div className="flex items-center gap-2 pt-2">
+                              <Badge variant="secondary" className="text-xs">
+                                <TrendingUp className="w-3 h-3 mr-1" />
+                                {person.stat}
+                              </Badge>
+                            </div>
+                          </div>
+                        </HoverCardContent>
+                      </HoverCard>
+                    ))}
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-foreground font-display font-bold text-lg flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-primary fill-primary animate-pulse" />
+                      12,500+ users loving it
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                        ))}
+                      </div>
+                      <span className="text-sm text-foreground/70 font-display">4.9/5 from real people</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Stats tabs */}
-              <Tabs defaultValue="time" className="w-full max-w-md">
-                <TabsList className="grid w-full grid-cols-3 bg-secondary/30">
-                  <TabsTrigger value="time" className="font-display">⏰ Time</TabsTrigger>
-                  <TabsTrigger value="outfits" className="font-display">👗 Outfits</TabsTrigger>
-                  <TabsTrigger value="confidence" className="font-display">💪 Confidence</TabsTrigger>
-                </TabsList>
-                <TabsContent value="time" className="space-y-2 mt-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-display font-bold text-primary">2.5hrs</span>
-                    <span className="text-foreground/70">saved per week</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">That's 130 hours per year to do what you actually love</p>
-                </TabsContent>
-                <TabsContent value="outfits" className="space-y-2 mt-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-display font-bold text-accent">3.2x</span>
-                    <span className="text-foreground/70">more outfit variety</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Discover forgotten pieces and fresh combinations</p>
-                </TabsContent>
-                <TabsContent value="confidence" className="space-y-2 mt-4">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-display font-bold text-primary">94%</span>
-                    <span className="text-foreground/70">feel more confident</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Look good, feel amazing, conquer your day</p>
-                </TabsContent>
-              </Tabs>
+              {/* Interactive tabs with better design */}
+              <Card className="border-2 border-primary/10 bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg font-display">Why people can't stop talking about it</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Tabs defaultValue="time" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3 bg-secondary/50 p-1">
+                      <TabsTrigger value="time" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
+                        <Clock className="w-4 h-4 mr-2" />
+                        Time
+                      </TabsTrigger>
+                      <TabsTrigger value="outfits" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
+                        <ShoppingBag className="w-4 h-4 mr-2" />
+                        Variety
+                      </TabsTrigger>
+                      <TabsTrigger value="confidence" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
+                        <Award className="w-4 h-4 mr-2" />
+                        Confidence
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="time" className="space-y-4 mt-4">
+                      <div className="space-y-2">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">2.5hrs</span>
+                          <span className="text-foreground/70 text-lg">saved every single week</span>
+                        </div>
+                        <Progress value={85} className="h-2" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          That's <strong className="text-foreground">130 hours per year</strong> back in your life. Binge Netflix, learn guitar, sleep in—whatever you want.
+                        </p>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="outfits" className="space-y-4 mt-4">
+                      <div className="space-y-2">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">3.2x</span>
+                          <span className="text-foreground/70 text-lg">more outfit combinations</span>
+                        </div>
+                        <Progress value={75} className="h-2" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Stop wearing the same 5 outfits. Rediscover forgotten pieces and create <strong className="text-foreground">combinations you'd never think of</strong>.
+                        </p>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="confidence" className="space-y-4 mt-4">
+                      <div className="space-y-2">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">94%</span>
+                          <span className="text-foreground/70 text-lg">feel way more confident</span>
+                        </div>
+                        <Progress value={94} className="h-2" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          When you look good, you feel unstoppable. Our users report <strong className="text-foreground">major confidence boosts</strong> in work, dating, and life.
+                        </p>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
-          {/* Right side - Enhanced visual showcase */}
+          {/* Right side - Premium visual showcase */}
           <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.2s" }}>
             <div className="relative group max-w-lg mx-auto">
-              {/* Mega glow effect */}
-              <div className="absolute -inset-12 bg-gradient-to-br from-primary/50 via-accent/50 to-primary/50 blur-3xl rounded-full opacity-60 group-hover:opacity-80 transition-opacity duration-700 animate-pulse" />
+              {/* Ultra glow effect */}
+              <div className="absolute -inset-16 bg-gradient-to-br from-primary/60 via-accent/60 to-primary/60 blur-3xl rounded-full opacity-70 group-hover:opacity-90 transition-opacity duration-700 animate-pulse" />
               
-              {/* Main showcase */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-foreground/10 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
-                <div className="relative aspect-square p-8">
-                  <img
-                    src={styleAnimation}
-                    alt="AI Fashion Magic"
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                  {/* Subtle overlay effects */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
-                </div>
-              </div>
+              {/* Main showcase card */}
+              <Card className="relative border-4 border-foreground/10 bg-gradient-to-br from-background via-secondary/20 to-background backdrop-blur-xl shadow-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                <CardContent className="p-0">
+                  <div className="relative aspect-square p-8">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden ring-2 ring-primary/20">
+                      <img
+                        src={styleAnimation}
+                        alt="AI Fashion Magic in Action"
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Gradient overlays */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-              {/* Floating badges - modernized */}
-              <Badge className="absolute -top-6 -right-6 bg-gradient-to-r from-accent to-primary text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl rotate-12 border-2 border-background hover:scale-110 transition-transform cursor-default">
-                <Sparkles className="w-4 h-4 mr-1 inline" />
-                AI Powered
-              </Badge>
-              <Badge className="absolute -bottom-6 -left-6 bg-gradient-to-r from-primary to-accent text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl -rotate-6 border-2 border-background hover:scale-110 transition-transform cursor-default flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                12.5K+ Users
-              </Badge>
+              {/* Floating badges - premium */}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Badge className="absolute -top-6 -right-6 bg-gradient-to-r from-accent to-primary text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl rotate-12 border-3 border-background hover:scale-110 hover:rotate-6 transition-all cursor-default animate-bounce-in">
+                      <Sparkles className="w-4 h-4 mr-1 inline animate-pulse" />
+                      AI Powered
+                    </Badge>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>Trained on 100K+ real outfits</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Badge className="absolute -bottom-6 -left-6 bg-gradient-to-r from-primary to-accent text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl -rotate-6 border-3 border-background hover:scale-110 hover:-rotate-3 transition-all cursor-default flex items-center gap-2 animate-bounce-in" style={{ animationDelay: "0.1s" }}>
+                      <Users className="w-4 h-4" />
+                      12.5K+ Users
+                    </Badge>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p>Join the style revolution</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Badge className="absolute top-1/2 -left-8 bg-gradient-to-r from-accent to-primary text-background px-5 py-2 rounded-full font-display text-xs font-bold shadow-xl rotate-90 border-2 border-background hover:scale-110 transition-all cursor-default animate-bounce-in" style={{ animationDelay: "0.2s" }}>
+                      <Star className="w-3 h-3 mr-1 inline fill-background" />
+                      4.9/5
+                    </Badge>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">
+                    <p>Average user rating</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
         </div>
