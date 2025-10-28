@@ -456,17 +456,6 @@ export const Hero = () => {
                   </TooltipContent>
                 </Tooltip>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Badge className="absolute top-1/2 -left-8 bg-gradient-to-r from-accent to-primary text-background px-5 py-2 rounded-full font-display text-xs font-bold shadow-xl rotate-90 border-2 border-background hover:scale-110 transition-all cursor-default animate-bounce-in" style={{ animationDelay: "0.2s" }}>
-                      <Star className="w-3 h-3 mr-1 inline fill-background" />
-                      4.9/5
-                    </Badge>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">
-                    <p>Average user rating</p>
-                  </TooltipContent>
-                </Tooltip>
               </TooltipProvider>
             </div>
           </div>
