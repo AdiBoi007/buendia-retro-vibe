@@ -85,9 +85,13 @@ export const Hero = () => {
 
             {/* Main headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-reveal">
-              Tell me your vibe,<br />
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent retro-border inline-block px-4 py-2 rotate-[-1deg] chromatic">
-                I build the fit.
+              You know your vibe.
+              <br />
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent inline-block">
+                We'll build
+              </span>{" "}
+              <span className="retro-border inline-block px-4 py-2 rotate-[-1deg] chromatic bg-primary/5">
+                the fit.
               </span>
             </h1>
 
@@ -163,13 +167,17 @@ export const Hero = () => {
             </div>
 
             {/* Tagline */}
-            <p className="text-foreground/80 text-lg font-body max-w-md font-medium">
-              Your style, your wardrobe, your vision — we just finish your thought.
+            <p className="text-foreground/80 text-lg font-body max-w-md font-medium leading-relaxed">
+              Stop overthinking what to wear.
+              <br />
+              <span className="text-primary font-display italic">
+                Your closet has everything you need.
+              </span>
             </p>
 
             {/* Sub-headline */}
-            <p className="text-foreground/70 text-base font-display italic">
-              AI-powered outfit matching. Clueless-level intuition.
+            <p className="text-foreground/60 text-base font-body italic">
+              (Yes, even that thing you bought two years ago and forgot about.)
             </p>
           </div>
 

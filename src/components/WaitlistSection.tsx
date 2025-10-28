@@ -56,17 +56,18 @@ export const WaitlistSection = () => {
           </div>
           
           <h2 className="font-display text-5xl md:text-7xl font-bold text-background mb-6 leading-tight text-center chromatic">
-            Don't sleep on this.
+            Your closet misses you.
             <br />
-            <span className="italic text-6xl md:text-8xl retro-border inline-block px-4 py-2 rotate-[1deg] bg-background/10">Join the waitlist.</span>
+            <span className="italic text-6xl md:text-8xl retro-border inline-block px-4 py-2 rotate-[1deg] bg-background/10">Let's reconnect.</span>
           </h2>
           
-          <p className="text-background/90 text-xl md:text-2xl font-body mb-12 max-w-2xl mx-auto text-center leading-relaxed">
-            Be the first to experience AI-powered outfit matching.
+          <p className="text-background/90 text-xl md:text-2xl font-body mb-4 max-w-2xl mx-auto text-center leading-relaxed">
+            Be among the first to experience AI styling that actually gets you.
+          </p>
+          <p className="text-background/80 text-lg font-body mb-8 max-w-xl mx-auto text-center">
+            <span className="font-display italic">No commitment. No credit card.</span>
             <br />
-            <span className="font-display italic text-2xl">No outfit regret. No decision fatigue.</span>
-            <br />
-            <span className="text-lg">Just pure style confidence. ✨</span>
+            Just early access to a smarter way to get dressed.
           </p>
 
           {/* Waitlist form card */}

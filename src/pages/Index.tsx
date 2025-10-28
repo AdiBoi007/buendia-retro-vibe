@@ -3,10 +3,12 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { StatsSection } from "@/components/StatsSection";
 import { BentoGrid } from "@/components/BentoGrid";
+import { ComparisonSection } from "@/components/ComparisonSection";
 import { WardrobeShowcase } from "@/components/WardrobeShowcase";
 import { StyleGallery } from "@/components/StyleGallery";
 import { FeaturesGrid } from "@/components/FeaturesGrid";
 import { PricingSection } from "@/components/PricingSection";
+import { SocialProof } from "@/components/SocialProof";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { FAQSection } from "@/components/FAQSection";
 import { WaitlistSection } from "@/components/WaitlistSection";
@@ -19,9 +21,11 @@ const Index = () => {
       <Hero />
       <StatsSection />
       <HowItWorks />
+      <ComparisonSection />
       <BentoGrid />
       <StyleGallery />
       <FeaturesGrid />
+      <SocialProof />
       <PricingSection />
       <TestimonialCarousel />
       <FAQSection />
