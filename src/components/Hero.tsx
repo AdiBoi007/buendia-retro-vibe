@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { MadLibsPrompt } from "./MadLibsPrompt";
 import { WardrobeCard } from "./WardrobeCard";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Users, TrendingUp, Heart } from "lucide-react";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
@@ -13,15 +15,19 @@ import styleAnimation from "@/assets/style-animation.gif";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
+  const navigate = useNavigate();
   const [selectedPrompt, setSelectedPrompt] = useState({
     mood: "",
     event: "",
     style: ""
   });
 
-  const handleStart = () => {
-    console.log("Starting with:", selectedPrompt);
-  };
+  const testimonials = [
+    { name: "Sarah Chen", role: "Fashion Blogger", initial: "SC", avatar: "", quote: "Changed my mornings completely" },
+    { name: "Mike Jordan", role: "Creative Director", initial: "MJ", avatar: "", quote: "Finally, my closet makes sense" },
+    { name: "Emma Rodriguez", role: "Stylist", initial: "ER", avatar: "", quote: "This is the future of styling" },
+    { name: "Alex Kim", role: "Entrepreneur", initial: "AK", avatar: "", quote: "Saves me 2 hours every week" }
+  ];
 
   return (
     <section className="relative min-h-screen overflow-hidden pt-20">
@@ -76,24 +82,43 @@ export const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 py-20 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Beta badge */}
-            <Badge className="mb-6 bg-gradient-to-r from-primary to-accent text-background border-0 px-6 py-2 text-sm font-display shadow-lg animate-bounce-in glow">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Now in Private Beta
-            </Badge>
+          <div className="space-y-6 animate-fade-in">
+            {/* Beta badge with hover effect */}
+            <HoverCard>
+              <HoverCardTrigger>
+                <Badge className="mb-4 bg-gradient-to-r from-primary via-accent to-primary text-background border-0 px-6 py-2.5 text-sm font-display shadow-xl animate-bounce-in cursor-pointer hover:scale-105 transition-transform">
+                  <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
+                  Join 12,500+ Beta Users
+                </Badge>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80 border-2 border-primary/20">
+                <div className="space-y-2">
+                  <h4 className="font-display font-semibold">Early Access Benefits</h4>
+                  <p className="text-sm text-muted-foreground">Get lifetime discounts, priority support, and exclusive features</p>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
 
-            {/* Main headline */}
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-reveal">
-              You know your vibe.
+            {/* Main headline - improved typography */}
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] text-reveal">
+              Your vibe.
               <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent inline-block">
-                We'll build
-              </span>{" "}
-              <span className="retro-border inline-block px-4 py-2 rotate-[-1deg] chromatic bg-primary/5">
-                the fit.
+              Our{" "}
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent inline-block animate-shimmer bg-[length:200%_100%]">
+                AI magic.
+              </span>
+              <br />
+              <span className="relative inline-block mt-2">
+                <span className="retro-border inline-block px-6 py-3 rotate-[-1deg] bg-gradient-to-r from-primary/10 to-accent/10">
+                  Perfect fits.
+                </span>
               </span>
             </h1>
+
+            {/* Subheadline */}
+            <p className="text-foreground/70 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
+              Stop overthinking what to wear. Your AI stylist knows your closet better than you do.
+            </p>
 
             {/* Mad Libs interactive prompt */}
             <MadLibsPrompt 
@@ -101,119 +126,125 @@ export const Hero = () => {
               setSelectedPrompt={setSelectedPrompt}
             />
 
-            {/* CTA buttons */}
-            <TooltipProvider>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      onClick={handleStart}
-                      size="lg"
-                      className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-8 py-7 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-0 retro-pulse"
-                    >
-                      <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                      Get Started
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-foreground text-background border-2 border-primary">
-                    <p>Get styled in seconds!</p>
-                  </TooltipContent>
-                </Tooltip>
-                
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="border-3 border-foreground text-foreground hover:bg-foreground hover:text-background font-display text-lg px-8 py-7 rounded-full transition-all hover:scale-105"
-                    >
-                      <Sparkles className="w-5 h-5 mr-2" />
-                      Join Waitlist
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-foreground text-background border-2 border-accent">
-                    <p>Be first to know when we launch</p>
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-            </TooltipProvider>
 
-            {/* Social proof */}
-            <div className="flex items-center gap-4 pt-6 animate-slide-up" style={{ animationDelay: "0.4s" }}>
-              <div className="flex -space-x-2">
-                {["SC", "MJ", "ER", "AK"].map((initial, i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent border-3 border-background flex items-center justify-center text-background font-display text-xs font-bold"
-                    style={{ zIndex: 4 - i }}
-                  >
-                    {initial}
-                  </div>
-                ))}
-              </div>
-              <p className="text-foreground/70 text-sm font-body">
-                Join <span className="font-bold text-foreground">12,500+</span> beta users
-              </p>
-            </div>
-
-            {/* Progress indicator */}
-            <div className="space-y-2 pt-6 animate-slide-up" style={{ animationDelay: "0.5s" }}>
-              <div className="flex justify-between text-sm font-body text-foreground/70">
-                <span>Waitlist filling up</span>
-                <span>73%</span>
-              </div>
-              <Progress value={73} className="h-2" />
-            </div>
-
-            {/* Tagline */}
-            <p className="text-foreground/80 text-lg font-body max-w-md font-medium leading-relaxed">
-              Stop overthinking what to wear.
-              <br />
-              <span className="text-primary font-display italic">
-                Your closet has everything you need.
-              </span>
-            </p>
-
-            {/* Sub-headline */}
-            <p className="text-foreground/60 text-base font-body italic">
-              (Yes, even that thing you bought two years ago and forgot about.)
-            </p>
-          </div>
-
-          {/* Right side - Retro CRT Monitor */}
-          <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.3s" }}>
-            <div className="relative group max-w-md mx-auto lg:mx-0">
-              {/* Enhanced glow effect behind monitor */}
-              <div className="absolute -inset-8 bg-gradient-to-br from-primary/40 via-accent/40 to-muted/40 blur-3xl rounded-3xl opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/20 to-muted/20 blur-2xl rounded-3xl animate-pulse" />
+            {/* CTA buttons - improved */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button
+                onClick={() => navigate('/signup')}
+                size="lg"
+                className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-accent/50 transition-all hover:scale-105 border-0 relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center">
+                  <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                  Get Started Free
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Button>
               
-              {/* CRT Monitor */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-foreground retro-pulse polaroid">
-                <div className="relative vignette">
-                  <img
-                    src={styleAnimation}
-                    alt="Style animation"
-                    className="w-full h-auto"
-                  />
-                  {/* Enhanced scanline overlay */}
-                  <div className="absolute inset-0 pointer-events-none scanlines opacity-40" />
-                  {/* VHS tracking lines */}
-                  <div className="absolute inset-0 pointer-events-none vhs-tracking opacity-30" />
-                  {/* Chromatic aberration on corners */}
-                  <div className="absolute inset-0 pointer-events-none" style={{
-                    background: 'radial-gradient(circle at 0% 0%, rgba(233, 79, 72, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(181, 197, 226, 0.1) 0%, transparent 50%)'
-                  }} />
+              <Button
+                onClick={() => navigate('/how-it-works')}
+                variant="outline"
+                size="lg"
+                className="border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background font-display text-lg px-10 py-7 rounded-full transition-all hover:scale-105 group"
+              >
+                <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                See How It Works
+              </Button>
+            </div>
+
+            {/* Social proof with avatars - upgraded */}
+            <div className="pt-6 animate-slide-up space-y-4" style={{ animationDelay: "0.3s" }}>
+              <div className="flex items-center gap-6">
+                <div className="flex -space-x-3">
+                  {testimonials.map((person, i) => (
+                    <HoverCard key={i}>
+                      <HoverCardTrigger>
+                        <Avatar className="w-12 h-12 border-3 border-background cursor-pointer hover:scale-110 hover:z-10 transition-all">
+                          <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-background font-display font-bold">
+                            {person.initial}
+                          </AvatarFallback>
+                        </Avatar>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-80">
+                        <div className="space-y-2">
+                          <h4 className="font-display font-semibold">{person.name}</h4>
+                          <p className="text-sm text-muted-foreground">{person.role}</p>
+                          <p className="text-sm italic">"{person.quote}"</p>
+                        </div>
+                      </HoverCardContent>
+                    </HoverCard>
+                  ))}
+                </div>
+                <div>
+                  <p className="text-foreground font-display font-semibold flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-primary fill-primary" />
+                    12,500+ happy users
+                  </p>
+                  <p className="text-foreground/60 text-sm">⭐️ 4.9/5 average rating</p>
                 </div>
               </div>
 
-              {/* Decorative sticker badges - retro style */}
-              <div className="absolute -top-4 -right-4 bg-accent text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl rotate-12 border-4 border-foreground retro-pulse">
-                retro-paper vibes ✨
+              {/* Stats tabs */}
+              <Tabs defaultValue="time" className="w-full max-w-md">
+                <TabsList className="grid w-full grid-cols-3 bg-secondary/30">
+                  <TabsTrigger value="time" className="font-display">⏰ Time</TabsTrigger>
+                  <TabsTrigger value="outfits" className="font-display">👗 Outfits</TabsTrigger>
+                  <TabsTrigger value="confidence" className="font-display">💪 Confidence</TabsTrigger>
+                </TabsList>
+                <TabsContent value="time" className="space-y-2 mt-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-display font-bold text-primary">2.5hrs</span>
+                    <span className="text-foreground/70">saved per week</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">That's 130 hours per year to do what you actually love</p>
+                </TabsContent>
+                <TabsContent value="outfits" className="space-y-2 mt-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-display font-bold text-accent">3.2x</span>
+                    <span className="text-foreground/70">more outfit variety</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Discover forgotten pieces and fresh combinations</p>
+                </TabsContent>
+                <TabsContent value="confidence" className="space-y-2 mt-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-display font-bold text-primary">94%</span>
+                    <span className="text-foreground/70">feel more confident</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Look good, feel amazing, conquer your day</p>
+                </TabsContent>
+              </Tabs>
+            </div>
+          </div>
+
+          {/* Right side - Enhanced visual showcase */}
+          <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.2s" }}>
+            <div className="relative group max-w-lg mx-auto">
+              {/* Mega glow effect */}
+              <div className="absolute -inset-12 bg-gradient-to-br from-primary/50 via-accent/50 to-primary/50 blur-3xl rounded-full opacity-60 group-hover:opacity-80 transition-opacity duration-700 animate-pulse" />
+              
+              {/* Main showcase */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-foreground/10 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
+                <div className="relative aspect-square p-8">
+                  <img
+                    src={styleAnimation}
+                    alt="AI Fashion Magic"
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
+                  {/* Subtle overlay effects */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+                </div>
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-secondary text-foreground px-4 py-2 rounded-full font-display text-sm font-bold shadow-xl -rotate-6 border-4 border-foreground glow">
-                AI stylist 💄
-              </div>
+
+              {/* Floating badges - modernized */}
+              <Badge className="absolute -top-6 -right-6 bg-gradient-to-r from-accent to-primary text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl rotate-12 border-2 border-background hover:scale-110 transition-transform cursor-default">
+                <Sparkles className="w-4 h-4 mr-1 inline" />
+                AI Powered
+              </Badge>
+              <Badge className="absolute -bottom-6 -left-6 bg-gradient-to-r from-primary to-accent text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl -rotate-6 border-2 border-background hover:scale-110 transition-transform cursor-default flex items-center gap-2">
+                <Users className="w-4 h-4" />
+                12.5K+ Users
+              </Badge>
             </div>
           </div>
         </div>
