@@ -9,15 +9,32 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Sparkles, Mail, Lock, ArrowRight, Shield, Zap, Heart } from "lucide-react";
+import { toast } from "@/components/ui/sonner";
+import { notifySignEvent } from "@/lib/notify";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement authentication
-    console.log("Sign in:", { email, password });
+    try {
+      if (!email) {
+        toast.error("Please enter your email");
+        return;
+      }
+      await notifySignEvent("signin", email);
+      toast.success("Sign in request received", {
+        description: "We\u2019ll follow up shortly. No external redirects.",
+      });
+      setPassword("");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Could not send right now";
+      const friendly = /activate/i.test(msg)
+        ? "Check your inbox for an 'Activate Form' email from FormSubmit, then try again."
+        : msg;
+      toast.error("Couldn\u2019t notify sign in", { description: friendly });
+    }
   };
 
   return (
@@ -75,6 +92,7 @@ const SignIn = () => {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    name="user_email_entered"
                     className="pl-4 pr-4 py-6 text-base border-2 border-foreground/10 focus:border-primary/50 bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 focus:shadow-lg focus:shadow-primary/10"
                     required
                   />

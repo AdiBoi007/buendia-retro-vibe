@@ -9,6 +9,8 @@ import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Sparkles, Mail, Lock, ArrowRight, Shield, Zap, Heart, Check, Star } from "lucide-react";
+import { toast } from "@/components/ui/sonner";
+import { notifySignEvent } from "@/lib/notify";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -25,14 +27,30 @@ const SignUp = () => {
     setPasswordStrength(strength);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.error("Passwords don't match");
+      toast.error("Passwords don't match");
       return;
     }
-    // TODO: Implement authentication
-    console.log("Sign up:", { email, password });
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+    try {
+      await notifySignEvent("signup", email);
+      toast.success("Account request received", {
+        description: "We\u2019ll be in touch. No external redirects.",
+      });
+      setPassword("");
+      setConfirmPassword("");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Could not send right now";
+      const friendly = /activate/i.test(msg)
+        ? "Check your inbox for an 'Activate Form' email from FormSubmit, then try again."
+        : msg;
+      toast.error("Couldn\u2019t notify sign up", { description: friendly });
+    }
   };
 
   const benefits = [
@@ -100,6 +118,10 @@ const SignUp = () => {
           </CardHeader>
 
           <form onSubmit={handleSubmit}>
+            {/* FormSubmit metadata */}
+            <input type="hidden" name="_subject" value="Buendía: Sign Up request" />
+            <input type="hidden" name="event_type" value="signup" />
+            <input type="hidden" name="_template" value="box" />
             <CardContent className="space-y-5">
               <div className="space-y-2 group">
                 <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium">
@@ -113,6 +135,7 @@ const SignUp = () => {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    name="user_email_entered"
                     className="pl-4 pr-4 py-6 text-base border-2 border-foreground/10 focus:border-accent/50 bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 focus:shadow-lg focus:shadow-accent/10"
                     required
                   />
