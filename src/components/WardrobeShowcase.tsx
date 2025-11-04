@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { useGender } from "./GenderProvider";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
+import maleOutfit1 from "@/assets/male-outfit-1.jpg";
+import maleOutfit2 from "@/assets/male-outfit-2.jpg";
+import maleOutfit3 from "@/assets/male-outfit-3.jpg";
 
 export const WardrobeShowcase = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { gender } = useGender();
+  const outfits = gender === "female" 
+    ? [outfit1, outfit2, outfit3] 
+    : [maleOutfit1, maleOutfit2, maleOutfit3];
 
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-secondary via-background to-muted relative overflow-hidden">
@@ -75,7 +83,7 @@ export const WardrobeShowcase = () => {
                 isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
               }`}
             >
-              {[outfit1, outfit2, outfit3].map((outfit, i) => (
+              {outfits.map((outfit, i) => (
                 <div
                   key={i}
                   className="w-64 bg-cream p-4 rounded-xl shadow-2xl border-4 border-foreground/20 hover:scale-105 hover:rotate-2 transition-all duration-300 cursor-pointer animate-fade-in"
