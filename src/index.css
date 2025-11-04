@@ -38,26 +38,26 @@ All colors MUST be HSL.
     --cream: 46 80% 94%; /* #F6EECF */
   }
 
-  /* Male color scheme - Retro Masculine Earth Tones */
+  /* Male color scheme - Retro 70s-80s Masculine */
   [data-gender="male"] {
     /* Burnt Orange - bold retro accent */
-    --primary: 25 85% 55%; /* #E8734A - Burnt orange */
+    --primary: 18 85% 60%; /* #E87D4A - Burnt orange */
     --primary-foreground: 35 100% 99%;
 
-    /* Olive Tan - warm military green */
-    --secondary: 45 35% 70%; /* #C2B896 - Olive tan */
+    /* Caramel Brown - warm vintage */
+    --secondary: 30 45% 65%; /* #C29E76 - Caramel brown */
     --secondary-foreground: 0 0% 20%;
 
-    /* Army Green - deep earth tone */
-    --muted: 95 30% 45%; /* #7A8F5B - Army green */
-    --muted-foreground: 0 0% 35%;
+    /* Retro Teal - cool vintage blue */
+    --muted: 185 45% 55%; /* #5AAEBC - Retro teal */
+    --muted-foreground: 0 0% 20%;
 
-    /* Mustard - retro pop */
-    --accent: 42 85% 55%; /* #E8B24A - Mustard yellow */
+    /* Golden Yellow - 70s pop */
+    --accent: 45 85% 58%; /* #E8C24A - Golden yellow */
     --accent-foreground: 0 0% 20%;
 
-    /* Warm cream - vintage glow */
-    --cream: 40 60% 85%; /* #E8D9C0 - Warm cream */
+    /* Warm Sand - vintage glow */
+    --cream: 40 50% 82%; /* #E0D0BA - Warm sand */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 35 100% 99%;
@@ -110,21 +110,21 @@ All colors MUST be HSL.
     --cream: 46 40% 30%;
   }
 
-  /* Male dark mode - Retro Masculine Earth Tones */
+  /* Male dark mode - Retro 70s-80s Masculine */
   .dark[data-gender="male"] {
-    --primary: 25 75% 60%; /* #E88959 - Warm burnt orange */
+    --primary: 18 80% 62%; /* #E8885F - Warm burnt orange */
     --primary-foreground: 35 100% 99%;
 
-    --secondary: 45 20% 25%; /* #403D32 - Dark olive */
+    --secondary: 30 35% 28%; /* #5A4A38 - Dark caramel */
     --secondary-foreground: 35 100% 99%;
 
-    --muted: 95 25% 30%; /* #525F3F - Dark army green */
-    --muted-foreground: 0 0% 70%;
+    --muted: 185 40% 45%; /* #4A9DAA - Dark retro teal */
+    --muted-foreground: 0 0% 80%;
 
-    --accent: 42 75% 60%; /* #E8BD5F - Bright mustard */
+    --accent: 45 80% 62%; /* #E8C85F - Bright golden */
     --accent-foreground: 0 0% 10%;
 
-    --cream: 40 40% 30%; /* #5E5543 - Dark warm cream */
+    --cream: 40 35% 32%; /* #5E5645 - Dark warm sand */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 35 100% 99%;
