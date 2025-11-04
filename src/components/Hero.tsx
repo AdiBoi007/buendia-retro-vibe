@@ -18,6 +18,7 @@ import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
 import styleAnimation from "@/assets/style-animation.gif";
 import heroBg from "@/assets/hero-bg.jpg";
+import maleFashion from "@/assets/male-fashion.png";
 
 export const Hero = () => {
   const navigate = useNavigate();
@@ -114,7 +115,7 @@ export const Hero = () => {
       
       {/* Hero background image with overlay */}
       <div className="absolute inset-0 opacity-10">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <img src={gender === "female" ? heroBg : maleFashion} alt="" className="w-full h-full object-cover" />
       </div>
       
       {/* Grain overlay */}

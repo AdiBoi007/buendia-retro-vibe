@@ -36,6 +36,28 @@ All colors MUST be HSL.
 
     /* Cream - highlight glow */
     --cream: 46 80% 94%; /* #F6EECF */
+  }
+
+  /* Male color scheme - Blue tones */
+  [data-gender="male"] {
+    /* Navy/Deep Blue base */
+    --primary: 220 85% 55%; /* #3B82F6 - Bold blue */
+    --primary-foreground: 35 100% 99%;
+
+    /* Steel blue secondary */
+    --secondary: 210 50% 75%; /* #A8C5E3 - Light steel blue */
+    --secondary-foreground: 0 0% 20%;
+
+    /* Slate - cool neutral */
+    --muted: 215 25% 65%; /* #8FA3B8 - Slate blue */
+    --muted-foreground: 0 0% 35%;
+
+    /* Ocean accent */
+    --accent: 200 75% 60%; /* #4DB8E8 - Ocean blue */
+    --accent-foreground: 0 0% 20%;
+
+    /* Cool silver glow */
+    --cream: 210 30% 88%; /* #D5DDE5 - Silver blue */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 35 100% 99%;
@@ -86,6 +108,23 @@ All colors MUST be HSL.
     --accent-foreground: 35 100% 99%;
 
     --cream: 46 40% 30%;
+  }
+
+  /* Male dark mode - Blue tones */
+  .dark[data-gender="male"] {
+    --primary: 220 80% 60%; /* #5B9EF6 - Bright blue for dark mode */
+    --primary-foreground: 35 100% 99%;
+
+    --secondary: 210 30% 30%; /* #3D4F5F - Dark steel */
+    --secondary-foreground: 35 100% 99%;
+
+    --muted: 215 20% 35%; /* #4A5968 - Dark slate */
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 200 70% 55%; /* #3FABD0 - Bright ocean */
+    --accent-foreground: 35 100% 99%;
+
+    --cream: 210 25% 35%; /* #4A5565 - Dark silver blue */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 35 100% 99%;
