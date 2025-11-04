@@ -197,16 +197,6 @@ export const Hero = () => {
               </span>
             </h1>
 
-            {/* Subheadline with personality */}
-            <div className="space-y-2">
-              <p className="text-foreground/80 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
-                Stop the morning outfit panic. Your AI stylist already knows what you'll love—
-                <span className="text-primary font-semibold"> before you do.</span>
-              </p>
-              <p className="text-foreground/60 text-base md:text-lg font-body max-w-xl">
-                Real talk: getting dressed shouldn't feel like a chore. Let's make it fun again.
-              </p>
-            </div>
 
             {/* Mad Libs interactive prompt */}
             <MadLibsPrompt 
@@ -227,7 +217,7 @@ export const Hero = () => {
                     >
                       <span className="relative z-10 flex items-center">
                         <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                        Start Free Trial
+                        Join Waitlist
                         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
