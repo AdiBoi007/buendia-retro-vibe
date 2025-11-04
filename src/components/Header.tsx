@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { GenderToggle } from "./GenderToggle";
 import { Badge } from "@/components/ui/badge";
 
 export const Header = () => {
@@ -67,6 +68,7 @@ export const Header = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <GenderToggle />
             <ThemeToggle />
             <Button
               variant="outline"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGender } from "./GenderProvider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,13 +21,14 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 export const Hero = () => {
   const navigate = useNavigate();
+  const { gender } = useGender();
   const [selectedPrompt, setSelectedPrompt] = useState({
     mood: "",
     event: "",
     style: ""
   });
 
-  const testimonials = [
+  const femaleTestimonials = [
     { 
       name: "Sarah Chen", 
       role: "Fashion Blogger", 
@@ -60,6 +62,43 @@ export const Hero = () => {
       stat: "3.2x more variety"
     }
   ];
+
+  const maleTestimonials = [
+    { 
+      name: "Marcus Johnson", 
+      role: "Tech Lead", 
+      initial: "MJ", 
+      avatar: "", 
+      quote: "No more 'do these pants match this shirt?' mornings. Just confidence.",
+      stat: "95 new combinations"
+    },
+    { 
+      name: "David Park", 
+      role: "Creative Director", 
+      initial: "DP", 
+      avatar: "", 
+      quote: "Finally using my entire wardrobe instead of the same 5 shirts on rotation",
+      stat: "Saves 3 hrs/week"
+    },
+    { 
+      name: "James Martinez", 
+      role: "Fitness Coach", 
+      initial: "JM", 
+      avatar: "", 
+      quote: "The AI actually gets my style. Even helps me dress for different occasions",
+      stat: "Uses it daily"
+    },
+    { 
+      name: "Ryan Lee", 
+      role: "Entrepreneur", 
+      initial: "RL", 
+      avatar: "", 
+      quote: "Game changer. Went from basic to actually having style in weeks",
+      stat: "4x outfit variety"
+    }
+  ];
+
+  const testimonials = gender === "female" ? femaleTestimonials : maleTestimonials;
 
   const stats = [
     { icon: Users, value: "12.5K+", label: "Happy Users", color: "text-primary" },
@@ -176,7 +215,7 @@ export const Hero = () => {
             {/* Main headline - ultra premium */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] text-reveal">
               <span className="inline-block hover:scale-105 transition-transform cursor-default">
-                Your vibe.
+                {gender === "female" ? "Your vibe." : "Your style."}
               </span>
               <br />
               <span className="inline-block hover:scale-105 transition-transform cursor-default">
@@ -191,7 +230,7 @@ export const Hero = () => {
               <br />
               <span className="relative inline-block mt-2 group">
                 <span className="retro-border inline-block px-6 py-3 rotate-[-1deg] bg-gradient-to-r from-primary/10 to-accent/10 group-hover:rotate-0 transition-transform">
-                  Perfect fits.
+                  {gender === "female" ? "Perfect fits." : "Sharp looks."}
                 </span>
                 <Heart className="w-6 h-6 absolute -bottom-1 -right-6 text-primary fill-primary animate-pulse opacity-80" />
               </span>
@@ -200,11 +239,15 @@ export const Hero = () => {
             {/* Subheadline with personality */}
             <div className="space-y-2">
               <p className="text-foreground/80 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
-                Stop the morning outfit panic. Your AI stylist already knows what you'll love—
+                {gender === "female" 
+                  ? "Stop the morning outfit panic. Your AI stylist already knows what you'll love—"
+                  : "No more \"what should I wear?\" Your AI stylist figures it out—"}
                 <span className="text-primary font-semibold"> before you do.</span>
               </p>
               <p className="text-foreground/60 text-base md:text-lg font-body max-w-xl">
-                Real talk: getting dressed shouldn't feel like a chore. Let's make it fun again.
+                {gender === "female" 
+                  ? "Real talk: getting dressed shouldn't feel like a chore. Let's make it fun again."
+                  : "Getting dressed shouldn't be a decision. Make it effortless."}
               </p>
             </div>
 

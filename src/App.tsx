@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { GenderProvider } from "@/components/GenderProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SignIn from "./pages/SignIn";
@@ -18,7 +19,8 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark" storageKey="buendia-ui-theme">
-      <TooltipProvider>
+      <GenderProvider defaultGender="female" storageKey="buendia-gender">
+        <TooltipProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -35,6 +37,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
+      </GenderProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
