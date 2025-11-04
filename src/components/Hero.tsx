@@ -8,7 +8,14 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-background">
+        <img 
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+      </div>
       
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">

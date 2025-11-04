@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
-import { StatsSection } from "@/components/StatsSection";
 import { BentoGrid } from "@/components/BentoGrid";
 import { ComparisonSection } from "@/components/ComparisonSection";
 import { WardrobeShowcase } from "@/components/WardrobeShowcase";
@@ -19,7 +18,6 @@ const Index = () => {
     <main className="relative">
       <Header />
       <Hero />
-      <StatsSection />
       <HowItWorks />
       <ComparisonSection />
       <BentoGrid />
