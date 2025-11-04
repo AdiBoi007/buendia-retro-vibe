@@ -7,29 +7,25 @@ const stats = [
     icon: Users,
     value: 12500,
     suffix: "+",
-    label: "Beta Users",
-    color: "from-primary to-accent"
+    label: "Beta Users"
   },
   {
     icon: Clock,
     value: 15,
-    suffix: " min",
-    label: "Daily Time Saved",
-    color: "from-accent to-muted"
+    suffix: "min",
+    label: "Time Saved"
   },
   {
     icon: Heart,
     value: 87,
     suffix: "%",
-    label: "Wardrobe Usage",
-    color: "from-muted to-secondary"
+    label: "Usage"
   },
   {
     icon: Sparkles,
     value: 4.9,
     suffix: "/5",
-    label: "User Rating",
-    color: "from-secondary to-primary"
+    label: "Rating"
   }
 ];
 
@@ -57,7 +53,7 @@ const CountUpAnimation = ({ end, duration = 2000, suffix = "" }: { end: number; 
   }, [end, duration]);
 
   return (
-    <span className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+    <span className="font-display text-3xl md:text-4xl font-semibold text-foreground">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -65,50 +61,28 @@ const CountUpAnimation = ({ end, duration = 2000, suffix = "" }: { end: number; 
 
 export const StatsSection = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-background via-secondary/20 to-background relative overflow-hidden">
-      <div className="absolute inset-0 grain pointer-events-none opacity-20" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-muted/20 to-secondary/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            The numbers speak
-            <br />
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              for themselves.
-            </span>
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+    <section className="py-20 px-6 bg-background">
+      <div className="container mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
-            <Card
+            <div
               key={index}
-              className="group border-3 border-foreground/10 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 bg-card/50 backdrop-blur-sm animate-bounce-in overflow-hidden"
+              className="text-center space-y-3 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardContent className="p-8 text-center relative">
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                
-                <div className="relative z-10 space-y-4">
-                  <div className={`w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <stat.icon className="w-8 h-8 text-background" />
-                  </div>
-
-                  <div>
-                    <CountUpAnimation 
-                      end={stat.value} 
-                      suffix={stat.suffix}
-                    />
-                  </div>
-
-                  <p className="font-body text-foreground/70 text-sm uppercase tracking-wider">
-                    {stat.label}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="w-12 h-12 mx-auto rounded-full bg-foreground/5 flex items-center justify-center">
+                <stat.icon className="w-6 h-6 text-foreground" strokeWidth={1.5} />
+              </div>
+              <div>
+                <CountUpAnimation 
+                  end={stat.value} 
+                  suffix={stat.suffix}
+                />
+              </div>
+              <p className="font-body text-foreground/50 text-xs uppercase tracking-wide">
+                {stat.label}
+              </p>
+            </div>
           ))}
         </div>
       </div>
