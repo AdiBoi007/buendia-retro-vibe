@@ -1,3 +1,4 @@
+import { useGender } from "./GenderProvider";
 import fashionCollage from "@/assets/fashion-collage.jpg";
 import polaroidStyle from "@/assets/polaroid-style.jpg";
 import wardrobeRack from "@/assets/wardrobe-rack.jpg";
@@ -10,9 +11,38 @@ import trendyOutfit from "@/assets/trendy-outfit.jpg";
 import accessoriesFlatLay from "@/assets/accessories-flat-lay.jpg";
 import streetStyle from "@/assets/street-style.jpg";
 import luxuryCloset from "@/assets/luxury-closet.jpg";
+import maleFashionDisplay from "@/assets/male-fashion-display.jpg";
+import maleBoutique from "@/assets/male-boutique.jpg";
+import maleClothingRack from "@/assets/male-clothing-rack.jpg";
+import maleStreetStyle from "@/assets/male-street-style.jpg";
+import maleAccessories from "@/assets/male-accessories.jpg";
+import maleLuxuryCloset from "@/assets/male-luxury-closet.jpg";
 import { Card } from "@/components/ui/card";
 
 export const StyleGallery = () => {
+  const { gender } = useGender();
+  
+  const galleryImages = gender === "female" 
+    ? {
+        display: fashionDisplay,
+        boutique: boutiqueShop,
+        rack: clothingRack,
+        models: fashionModels,
+        outfit: trendyOutfit,
+        accessories: accessoriesFlatLay,
+        street: streetStyle,
+        closet: luxuryCloset
+      }
+    : {
+        display: maleFashionDisplay,
+        boutique: maleBoutique,
+        rack: maleClothingRack,
+        models: maleStreetStyle,
+        outfit: maleAccessories,
+        accessories: maleAccessories,
+        street: maleStreetStyle,
+        closet: maleLuxuryCloset
+      };
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-muted/30 via-background to-secondary/30 relative overflow-hidden">
       <div className="absolute inset-0 grain pointer-events-none opacity-30" />
@@ -34,7 +64,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse">
             <div className="relative overflow-hidden">
               <img
-                src={fashionDisplay}
+                src={galleryImages.display}
                 alt="Curated fashion display and style inspiration"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -55,7 +85,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse md:col-span-2" style={{ animationDelay: "0.1s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={boutiqueShop}
+                src={galleryImages.boutique}
                 alt="Beautiful boutique fashion shopping experience"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -76,7 +106,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse" style={{ animationDelay: "0.2s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={clothingRack}
+                src={galleryImages.rack}
                 alt="Minimalist clothing rack organization"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -97,7 +127,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse" style={{ animationDelay: "0.3s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={fashionModels}
+                src={galleryImages.models}
                 alt="Fashion models showcasing trendy outfits"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -118,7 +148,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse" style={{ animationDelay: "0.4s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={trendyOutfit}
+                src={galleryImages.outfit}
                 alt="Trendy outfit combinations and styling"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -139,7 +169,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 md:col-span-2 animate-slide-up retro-pulse" style={{ animationDelay: "0.5s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={accessoriesFlatLay}
+                src={galleryImages.accessories}
                 alt="Fashion accessories and styling details"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -160,7 +190,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 animate-slide-up retro-pulse md:col-span-2" style={{ animationDelay: "0.6s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={streetStyle}
+                src={galleryImages.street}
                 alt="Urban street style fashion inspiration"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -181,7 +211,7 @@ export const StyleGallery = () => {
           <Card className="group overflow-hidden border-4 border-foreground/10 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:scale-105 md:col-span-2 animate-slide-up retro-pulse" style={{ animationDelay: "0.7s" }}>
             <div className="relative overflow-hidden">
               <img
-                src={luxuryCloset}
+                src={galleryImages.closet}
                 alt="Luxury closet and wardrobe organization"
                 className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
