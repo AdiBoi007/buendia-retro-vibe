@@ -16,6 +16,9 @@ import { ArrowRight, Sparkles, Zap, Users, TrendingUp, Heart, Clock, ShoppingBag
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
+import maleOutfit1 from "@/assets/male-outfit-1.jpg";
+import maleOutfit2 from "@/assets/male-outfit-2.jpg";
+import maleOutfit3 from "@/assets/male-outfit-3.jpg";
 import styleAnimation from "@/assets/style-animation.gif";
 import heroBg from "@/assets/hero-bg.jpg";
 import maleFashion from "@/assets/male-fashion.png";
@@ -100,6 +103,9 @@ export const Hero = () => {
   ];
 
   const testimonials = gender === "female" ? femaleTestimonials : maleTestimonials;
+  const outfits = gender === "female" 
+    ? [outfit1, outfit2, outfit3] 
+    : [maleOutfit1, maleOutfit2, maleOutfit3];
 
   const stats = [
     { icon: Users, value: "12.5K+", label: "Happy Users", color: "text-primary" },
@@ -140,19 +146,19 @@ export const Hero = () => {
       {/* Floating wardrobe cards - background layer */}
       <div className="absolute inset-0 pointer-events-none">
         <WardrobeCard
-          image={outfit1}
+          image={outfits[0]}
           className="absolute top-20 left-12 rotate-[-8deg] opacity-40"
         />
         <WardrobeCard
-          image={outfit2}
+          image={outfits[1]}
           className="absolute bottom-32 right-20 rotate-[12deg] opacity-50"
         />
         <WardrobeCard
-          image={outfit3}
+          image={outfits[2]}
           className="absolute top-1/3 right-12 rotate-[-5deg] opacity-50"
         />
         <WardrobeCard
-          image={outfit1}
+          image={outfits[0]}
           className="absolute bottom-40 left-16 rotate-[6deg] opacity-30"
         />
       </div>
