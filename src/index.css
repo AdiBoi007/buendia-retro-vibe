@@ -38,26 +38,26 @@ All colors MUST be HSL.
     --cream: 46 80% 94%; /* #F6EECF */
   }
 
-  /* Male color scheme - Blue tones */
+  /* Male color scheme - Retro Masculine Earth Tones */
   [data-gender="male"] {
-    /* Navy/Deep Blue base */
-    --primary: 220 85% 55%; /* #3B82F6 - Bold blue */
+    /* Burnt Orange - bold retro accent */
+    --primary: 25 85% 55%; /* #E8734A - Burnt orange */
     --primary-foreground: 35 100% 99%;
 
-    /* Steel blue secondary */
-    --secondary: 210 50% 75%; /* #A8C5E3 - Light steel blue */
+    /* Olive Tan - warm military green */
+    --secondary: 45 35% 70%; /* #C2B896 - Olive tan */
     --secondary-foreground: 0 0% 20%;
 
-    /* Slate - cool neutral */
-    --muted: 215 25% 65%; /* #8FA3B8 - Slate blue */
+    /* Army Green - deep earth tone */
+    --muted: 95 30% 45%; /* #7A8F5B - Army green */
     --muted-foreground: 0 0% 35%;
 
-    /* Ocean accent */
-    --accent: 200 75% 60%; /* #4DB8E8 - Ocean blue */
+    /* Mustard - retro pop */
+    --accent: 42 85% 55%; /* #E8B24A - Mustard yellow */
     --accent-foreground: 0 0% 20%;
 
-    /* Cool silver glow */
-    --cream: 210 30% 88%; /* #D5DDE5 - Silver blue */
+    /* Warm cream - vintage glow */
+    --cream: 40 60% 85%; /* #E8D9C0 - Warm cream */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 35 100% 99%;
@@ -110,21 +110,21 @@ All colors MUST be HSL.
     --cream: 46 40% 30%;
   }
 
-  /* Male dark mode - Blue tones */
+  /* Male dark mode - Retro Masculine Earth Tones */
   .dark[data-gender="male"] {
-    --primary: 220 80% 60%; /* #5B9EF6 - Bright blue for dark mode */
+    --primary: 25 75% 60%; /* #E88959 - Warm burnt orange */
     --primary-foreground: 35 100% 99%;
 
-    --secondary: 210 30% 30%; /* #3D4F5F - Dark steel */
+    --secondary: 45 20% 25%; /* #403D32 - Dark olive */
     --secondary-foreground: 35 100% 99%;
 
-    --muted: 215 20% 35%; /* #4A5968 - Dark slate */
+    --muted: 95 25% 30%; /* #525F3F - Dark army green */
     --muted-foreground: 0 0% 70%;
 
-    --accent: 200 70% 55%; /* #3FABD0 - Bright ocean */
-    --accent-foreground: 35 100% 99%;
+    --accent: 42 75% 60%; /* #E8BD5F - Bright mustard */
+    --accent-foreground: 0 0% 10%;
 
-    --cream: 210 25% 35%; /* #4A5565 - Dark silver blue */
+    --cream: 40 40% 30%; /* #5E5543 - Dark warm cream */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 35 100% 99%;
