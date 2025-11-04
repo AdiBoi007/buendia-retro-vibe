@@ -1,44 +1,131 @@
-import { Brain, Clock, Heart, Shield } from "lucide-react";
+import { Brain, Clock, Heart, Shield, Smartphone, Users } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Badge } from "@/components/ui/badge";
 
-const features = [
-  {
-    icon: Brain,
-    title: "Intuitive AI"
-  },
-  {
-    icon: Clock,
-    title: "5-Second Outfits"
-  },
-  {
-    icon: Heart,
-    title: "Your Closet"
-  },
-  {
-    icon: Shield,
-    title: "Private & Secure"
-  }
-];
+const features = {
+  ai: [
+    {
+      icon: Brain,
+      title: "Clueless-Level Intuition",
+      description: "Our AI understands your style better than you do. Like Cher's computer, but way smarter."
+    },
+    {
+      icon: Smartphone,
+      title: "Chat, Don't Click",
+      description: "Natural conversations, not forms. Tell us your vibe like you'd text a friend."
+    }
+  ],
+  wardrobe: [
+    {
+      icon: Heart,
+      title: "Your Closet, Curated",
+      description: "Every piece you own, digitized and ready to mix. No more 'I have nothing to wear.'"
+    },
+    {
+      icon: Clock,
+      title: "5-Second Outfits",
+      description: "From 'what should I wear?' to 'wow I look good' in the time it takes to make coffee."
+    }
+  ],
+  privacy: [
+    {
+      icon: Shield,
+      title: "Your Data, Your Control",
+      description: "Your wardrobe stays yours. We're stylists, not stalkers."
+    },
+    {
+      icon: Users,
+      title: "Evolves With You",
+      description: "The more you use Buendía, the better it gets at reading your mind."
+    }
+  ]
+};
 
 export const FeaturesGrid = () => {
   return (
-    <section id="features" className="py-20 px-6 bg-background">
+    <section id="features" className="py-24 px-6 bg-background scroll-mt-20">{/* Added scroll-mt-20 for anchor links */}
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="text-center space-y-4 p-8 rounded-3xl bg-secondary/30 hover:bg-secondary/50 transition-all animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-12 h-12 mx-auto rounded-full bg-foreground flex items-center justify-center">
-                <feature.icon className="w-6 h-6 text-background" strokeWidth={1.5} />
-              </div>
-              <h3 className="font-display text-lg text-foreground">
-                {feature.title}
-              </h3>
-            </div>
-          ))}
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Built different.
+            <br />
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              Styled personal.
+            </span>
+          </h2>
         </div>
+
+        <Tabs defaultValue="ai" className="max-w-4xl mx-auto">
+          <TabsList className="grid w-full grid-cols-3 mb-12 bg-secondary/50 p-1 rounded-2xl">
+            <TabsTrigger 
+              value="ai" 
+              className="font-display text-base rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background"
+            >
+              AI Magic
+            </TabsTrigger>
+            <TabsTrigger 
+              value="wardrobe"
+              className="font-display text-base rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background"
+            >
+              Your Wardrobe
+            </TabsTrigger>
+            <TabsTrigger 
+              value="privacy"
+              className="font-display text-base rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background"
+            >
+              Privacy First
+            </TabsTrigger>
+          </TabsList>
+
+          {Object.entries(features).map(([key, items]) => (
+            <TabsContent key={key} value={key} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                {items.map((feature, index) => (
+                  <HoverCard key={index}>
+                    <HoverCardTrigger asChild>
+                      <Card
+                        className="group border-2 border-foreground/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-fade-in cursor-pointer"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <CardHeader>
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                            <feature.icon className="w-6 h-6 text-background" />
+                          </div>
+                          <CardTitle className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
+                            {feature.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <CardDescription className="font-body text-foreground/70 leading-relaxed">
+                            {feature.description}
+                          </CardDescription>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-card/95 backdrop-blur-md border-2 border-primary/20 shadow-2xl" side="top">
+                      <div className="space-y-2">
+                        <h4 className="font-display text-sm font-semibold text-foreground flex items-center gap-2">
+                          <feature.icon className="w-4 h-4 text-primary" />
+                          Why it matters
+                        </h4>
+                        <p className="text-sm text-foreground/70 font-body leading-relaxed">
+                          {feature.title === "Clueless-Level Intuition" && "No more endless scrolling through your closet. Buendía knows your style DNA and serves up looks that feel authentically you."}
+                          {feature.title === "Chat, Don't Click" && "Style advice should feel like texting a friend, not filling out a tax form. Just vibe with Buendía naturally."}
+                          {feature.title === "Your Closet, Curated" && "Stop buying clothes because you forgot what you own. See your entire wardrobe at a glance and fall in love with it again."}
+                          {feature.title === "5-Second Outfits" && "Life's too short to spend 20 minutes staring at your closet. Get dressed with confidence, every single time."}
+                          {feature.title === "Your Data, Your Control" && "Your wardrobe is personal. We treat it with respect, keeping everything private and secure - always."}
+                          {feature.title === "Evolves With You" && "Your style changes, seasons change, trends change. Buendía adapts to all of it, getting smarter with every outfit."}
+                        </p>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
       </div>
     </section>
   );
