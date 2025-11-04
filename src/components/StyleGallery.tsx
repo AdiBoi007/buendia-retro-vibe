@@ -11,12 +11,12 @@ import trendyOutfit from "@/assets/trendy-outfit.jpg";
 import accessoriesFlatLay from "@/assets/accessories-flat-lay.jpg";
 import streetStyle from "@/assets/street-style.jpg";
 import luxuryCloset from "@/assets/luxury-closet.jpg";
-import maleFashionDisplay from "@/assets/male-fashion-display.jpg";
-import maleBoutique from "@/assets/male-boutique.jpg";
-import maleClothingRack from "@/assets/male-clothing-rack.jpg";
-import maleStreetStyle from "@/assets/male-street-style.jpg";
-import maleAccessories from "@/assets/male-accessories.jpg";
-import maleLuxuryCloset from "@/assets/male-luxury-closet.jpg";
+import realMaleBoutique from "@/assets/real-male-boutique.jpg";
+import realMaleClothingRack from "@/assets/real-male-clothing-rack.jpg";
+import realMaleModel from "@/assets/real-male-model.jpg";
+import realMaleAccessories from "@/assets/real-male-accessories.jpg";
+import realMaleCloset from "@/assets/real-male-closet.jpg";
+import realMaleStreet from "@/assets/real-male-street.jpg";
 import { Card } from "@/components/ui/card";
 
 export const StyleGallery = () => {
@@ -34,14 +34,14 @@ export const StyleGallery = () => {
         closet: luxuryCloset
       }
     : {
-        display: maleFashionDisplay,
-        boutique: maleBoutique,
-        rack: maleClothingRack,
-        models: maleStreetStyle,
-        outfit: maleAccessories,
-        accessories: maleAccessories,
-        street: maleStreetStyle,
-        closet: maleLuxuryCloset
+        display: realMaleBoutique,
+        boutique: realMaleBoutique,
+        rack: realMaleClothingRack,
+        models: realMaleModel,
+        outfit: realMaleAccessories,
+        accessories: realMaleAccessories,
+        street: realMaleStreet,
+        closet: realMaleCloset
       };
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-muted/30 via-background to-secondary/30 relative overflow-hidden">
