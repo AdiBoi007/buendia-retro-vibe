@@ -152,38 +152,16 @@ export const Hero = () => {
                   <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]">
                     AI magic.
                   </span>
-                  <Sparkles className="w-8 h-8 md:w-10 md:h-10 absolute -top-2 -right-8 md:-right-10 text-accent animate-pulse" />
                 </span>
-              </span>
-              <br />
-              <span className="relative inline-block mt-2 group">
-                <span className="retro-border inline-block px-6 py-3 rotate-[-1deg] bg-gradient-to-r from-primary/10 to-accent/10 group-hover:rotate-0 transition-transform">
-                  {gender === "female" ? "Perfect fits." : "Sharp looks."}
-                </span>
-                <Heart className="w-6 h-6 absolute -bottom-1 -right-6 text-primary fill-primary animate-pulse opacity-80" />
               </span>
             </h1>
 
-            {/* Subheadline with personality */}
-            <div className="space-y-2">
-              <p className="text-foreground/80 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
-                {gender === "female" 
-                  ? "Stop the morning outfit panic. Your AI stylist already knows what you'll love—"
-                  : "No more \"what should I wear?\" Your AI stylist figures it out—"}
-                <span className="text-primary font-semibold"> before you do.</span>
-              </p>
-              <p className="text-foreground/60 text-base md:text-lg font-body max-w-xl">
-                {gender === "female" 
-                  ? "Real talk: getting dressed shouldn't feel like a chore. Let's make it fun again."
-                  : "Getting dressed shouldn't be a decision. Make it effortless."}
-              </p>
-            </div>
-
-            {/* Mad Libs interactive prompt */}
-            <MadLibsPrompt 
-              selectedPrompt={selectedPrompt}
-              setSelectedPrompt={setSelectedPrompt}
-            />
+            {/* Simplified subheadline */}
+            <p className="text-foreground/80 text-xl md:text-2xl font-body max-w-xl leading-relaxed">
+              {gender === "female" 
+                ? "Your AI stylist knows what you'll love—before you do."
+                : "Your AI stylist figures it out—instantly."}
+            </p>
 
             {/* CTA buttons - premium with tooltips */}
             <TooltipProvider>
@@ -228,59 +206,66 @@ export const Hero = () => {
             </TooltipProvider>
           </div>
 
-          {/* Right side - Premium visual showcase */}
+          {/* Right side - Premium visual showcase with multiple images */}
           <div className="relative animate-fade-in lg:mt-0 mt-12" style={{ animationDelay: "0.2s" }}>
-            <div className="relative group max-w-lg mx-auto">
-              {/* Ultra glow effect */}
-              <div className="absolute -inset-16 bg-gradient-to-br from-primary/60 via-accent/60 to-primary/60 blur-3xl rounded-full opacity-70 group-hover:opacity-90 transition-opacity duration-700 animate-pulse" />
-              
-              {/* Main showcase card */}
-              <Card className="relative border-4 border-foreground/10 bg-gradient-to-br from-background via-secondary/20 to-background backdrop-blur-xl shadow-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
-                <CardContent className="p-0">
-                  <div className="relative aspect-square p-8">
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden ring-2 ring-primary/20">
-                      <img
-                        key={gender}
-                        src={gender === "female" ? styleAnimation : maleStyleAnimation}
-                        alt="AI Fashion Magic in Action"
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Gradient overlays */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
+            <div className="space-y-6">
+              {/* Main showcase */}
+              <div className="relative group max-w-lg mx-auto">
+                {/* Ultra glow effect */}
+                <div className="absolute -inset-16 bg-gradient-to-br from-primary/60 via-accent/60 to-primary/60 blur-3xl rounded-full opacity-70 group-hover:opacity-90 transition-opacity duration-700 animate-pulse" />
+                
+                {/* Main showcase card */}
+                <Card className="relative border-4 border-foreground/10 bg-gradient-to-br from-background via-secondary/20 to-background backdrop-blur-xl shadow-2xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-square p-8">
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden ring-2 ring-primary/20">
+                        <img
+                          key={gender}
+                          src={gender === "female" ? styleAnimation : maleStyleAnimation}
+                          alt="AI Fashion Magic in Action"
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Gradient overlays */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
 
-              {/* Floating badges - premium */}
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Badge className="absolute -top-6 -right-6 bg-gradient-to-br from-primary to-accent text-background border-0 px-6 py-3 text-base font-display shadow-2xl animate-float cursor-default hover:scale-110 transition-transform">
-                      <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
-                      AI Powered
-                    </Badge>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Advanced fashion AI • Learns your style</p>
-                  </TooltipContent>
-                </Tooltip>
+                {/* Floating badges - premium */}
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Badge className="absolute -top-6 -right-6 bg-gradient-to-br from-primary to-accent text-background border-0 px-6 py-3 text-base font-display shadow-2xl animate-float cursor-default hover:scale-110 transition-transform">
+                        <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
+                        AI Powered
+                      </Badge>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Advanced fashion AI</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Badge 
-                      className="absolute -bottom-6 -left-6 bg-gradient-to-br from-accent to-primary text-background border-0 px-6 py-3 text-base font-display shadow-2xl cursor-default hover:scale-110 transition-transform" 
-                      style={{ animationDelay: "1s" }}
-                    >
-                      12.5K+ Users
-                    </Badge>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Join thousands of fashion-forward users</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              {/* Additional outfit cards */}
+              <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                {outfits.map((outfit, index) => (
+                  <Card key={index} className="border-2 border-foreground/10 overflow-hidden group hover:scale-105 transition-transform duration-300">
+                    <CardContent className="p-0">
+                      <div className="aspect-square relative">
+                        <img
+                          src={outfit}
+                          alt={`Outfit ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
