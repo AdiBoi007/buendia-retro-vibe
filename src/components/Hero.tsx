@@ -18,6 +18,7 @@ import maleOutfit1 from "@/assets/male-outfit-1.jpg";
 import maleOutfit2 from "@/assets/male-outfit-2.jpg";
 import maleOutfit3 from "@/assets/male-outfit-3.jpg";
 import styleAnimation from "@/assets/style-animation.gif";
+import maleStyleAnimation from "@/assets/male-style-animation.gif";
 import heroBg from "@/assets/hero-bg.jpg";
 import maleFashion from "@/assets/male-fashion.png";
 
@@ -239,7 +240,7 @@ export const Hero = () => {
                   <div className="relative aspect-square p-8">
                     <div className="relative w-full h-full rounded-2xl overflow-hidden ring-2 ring-primary/20">
                       <img
-                        src={styleAnimation}
+                        src={gender === "female" ? styleAnimation : maleStyleAnimation}
                         alt="AI Fashion Magic in Action"
                         className="w-full h-full object-cover"
                       />
