@@ -240,6 +240,7 @@ export const Hero = () => {
                   <div className="relative aspect-square p-8">
                     <div className="relative w-full h-full rounded-2xl overflow-hidden ring-2 ring-primary/20">
                       <img
+                        key={gender}
                         src={gender === "female" ? styleAnimation : maleStyleAnimation}
                         alt="AI Fashion Magic in Action"
                         className="w-full h-full object-cover"
