@@ -95,44 +95,44 @@ export const Hero = () => {
                 <HoverCardTrigger>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Badge className="mb-4 bg-gradient-to-r from-primary via-accent to-primary text-background border-0 px-6 py-2.5 text-sm font-display shadow-xl animate-bounce-in cursor-pointer hover:scale-105 transition-all duration-300 group">
-                        <Sparkles className="w-4 h-4 mr-2 animate-pulse group-hover:rotate-12 transition-transform" />
+                      <Badge className="mb-4 bg-gradient-to-br from-primary/90 to-accent/90 text-background border-0 px-8 py-3 text-sm font-display shadow-lg animate-bounce-in cursor-pointer hover:scale-105 transition-all duration-300 group backdrop-blur-xl rounded-full">
+                        <Sparkles className="w-4 h-4 mr-2 animate-pulse group-hover:rotate-12 transition-transform" strokeWidth={1.5} />
                         Join 12,500+ Beta Users
-                        <Award className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <Award className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" strokeWidth={1.5} />
                       </Badge>
                     </TooltipTrigger>
-                    <TooltipContent side="bottom" className="bg-gradient-to-r from-primary to-accent text-background border-0">
-                      <p className="font-display">Click for exclusive perks! 🎁</p>
+                    <TooltipContent side="bottom" className="bg-gradient-to-br from-primary/95 to-accent/95 text-background border-0 backdrop-blur-xl rounded-2xl shadow-lg">
+                      <p className="font-display font-medium">Click for exclusive perks! 🎁</p>
                     </TooltipContent>
                   </Tooltip>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-96 border-2 border-primary/20 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
+                <HoverCardContent className="w-96 border border-foreground/5 bg-background/95 backdrop-blur-2xl rounded-3xl shadow-2xl">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
-                      <Award className="w-5 h-5 text-primary" />
+                      <Award className="w-5 h-5 text-primary" strokeWidth={1.5} />
                       <h4 className="font-display font-bold text-lg">Early Access Perks</h4>
                     </div>
                     <Separator />
                     <div className="space-y-3">
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                        <p className="text-sm"><strong>50% off lifetime</strong> - Lock in beta pricing forever</p>
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
+                        <p className="text-sm font-medium"><strong>50% off lifetime</strong> - Lock in beta pricing forever</p>
                       </div>
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                        <p className="text-sm"><strong>Priority support</strong> - Direct line to our team</p>
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
+                        <p className="text-sm font-medium"><strong>Priority support</strong> - Direct line to our team</p>
                       </div>
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                        <p className="text-sm"><strong>Exclusive features</strong> - Try new AI models first</p>
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
+                        <p className="text-sm font-medium"><strong>Exclusive features</strong> - Try new AI models first</p>
                       </div>
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-                        <p className="text-sm"><strong>Beta community</strong> - Shape the future with us</p>
+                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
+                        <p className="text-sm font-medium"><strong>Beta community</strong> - Shape the future with us</p>
                       </div>
                     </div>
-                    <Progress value={67} className="h-2" />
-                    <p className="text-xs text-muted-foreground text-center">
+                    <Progress value={67} className="h-1.5" />
+                    <p className="text-xs text-muted-foreground text-center font-medium">
                       67% of beta slots filled • Join before they're gone
                     </p>
                   </div>
@@ -171,18 +171,18 @@ export const Hero = () => {
                     <Button
                       onClick={() => navigate('/signup')}
                       size="lg"
-                      className="group bg-gradient-to-r from-primary to-accent text-background font-display text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-accent/50 transition-all hover:scale-105 border-0 relative overflow-hidden"
+                      className="group bg-gradient-to-br from-primary to-accent text-background font-display text-lg px-10 py-7 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 border-0 relative overflow-hidden backdrop-blur-sm"
                     >
-                      <span className="relative z-10 flex items-center">
-                        <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                      <span className="relative z-10 flex items-center font-semibold">
+                        <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" strokeWidth={2} />
                         Start Free Trial
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" strokeWidth={2} />
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="bottom" className="bg-gradient-to-r from-primary to-accent text-background border-0">
-                    <p className="font-display">No credit card required • 7 days free ✨</p>
+                  <TooltipContent side="bottom" className="bg-gradient-to-br from-primary/95 to-accent/95 text-background border-0 backdrop-blur-xl rounded-2xl shadow-lg">
+                    <p className="font-display font-medium">No credit card required • 7 days free ✨</p>
                   </TooltipContent>
                 </Tooltip>
                 
@@ -192,14 +192,14 @@ export const Hero = () => {
                       onClick={() => navigate('/how-it-works')}
                       variant="outline"
                       size="lg"
-                      className="border-2 border-foreground/20 text-foreground hover:bg-foreground hover:text-background font-display text-lg px-10 py-7 rounded-full transition-all hover:scale-105 group bg-background/50 backdrop-blur-sm"
+                      className="border border-foreground/10 text-foreground hover:bg-foreground/5 font-display text-lg px-10 py-7 rounded-full transition-all hover:scale-105 group bg-background/80 backdrop-blur-sm shadow-sm"
                     >
-                      <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                      <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" strokeWidth={2} />
                       See the Magic
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="bottom">
-                    <p>Watch a 60-second demo</p>
+                  <TooltipContent side="bottom" className="bg-background/95 border border-foreground/10 backdrop-blur-xl rounded-2xl shadow-lg">
+                    <p className="font-medium">Watch a 60-second demo</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -237,13 +237,13 @@ export const Hero = () => {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Badge className="absolute -top-6 -right-6 bg-gradient-to-br from-primary to-accent text-background border-0 px-6 py-3 text-base font-display shadow-2xl animate-float cursor-default hover:scale-110 transition-transform">
-                        <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
+                      <Badge className="absolute -top-4 -right-4 bg-gradient-to-br from-primary/95 to-accent/95 text-background border-0 px-6 py-2.5 text-sm font-display shadow-lg animate-float cursor-default hover:scale-110 transition-transform backdrop-blur-xl rounded-full">
+                        <Sparkles className="w-4 h-4 mr-2 animate-pulse" strokeWidth={1.5} />
                         AI Powered
                       </Badge>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Advanced fashion AI</p>
+                    <TooltipContent className="bg-background/95 border border-foreground/10 backdrop-blur-xl rounded-2xl shadow-lg">
+                      <p className="font-medium">Advanced fashion AI</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -252,7 +252,7 @@ export const Hero = () => {
               {/* Additional outfit cards */}
               <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
                 {outfits.map((outfit, index) => (
-                  <Card key={index} className="border-2 border-foreground/10 overflow-hidden group hover:scale-105 transition-transform duration-300">
+                  <Card key={index} className="border border-foreground/5 overflow-hidden group hover:scale-105 transition-transform duration-300 rounded-2xl shadow-sm hover:shadow-md">
                     <CardContent className="p-0">
                       <div className="aspect-square relative">
                         <img
