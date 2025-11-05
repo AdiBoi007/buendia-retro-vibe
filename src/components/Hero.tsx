@@ -107,13 +107,6 @@ export const Hero = () => {
     ? [outfit1, outfit2, outfit3] 
     : [maleOutfit1, maleOutfit2, maleOutfit3];
 
-  const stats = [
-    { icon: Users, value: "12.5K+", label: "Happy Users", color: "text-primary" },
-    { icon: TrendingUp, value: "94%", label: "Satisfaction", color: "text-accent" },
-    { icon: Clock, value: "2.5hrs", label: "Saved Weekly", color: "text-primary" },
-    { icon: Shirt, value: "3.2x", label: "More Outfits", color: "text-accent" }
-  ];
-
   return (
     <section className="relative min-h-screen overflow-hidden pt-20">
       {/* Animated gradient background */}
@@ -309,32 +302,6 @@ export const Hero = () => {
 
             {/* Social proof - ultra premium */}
             <div className="pt-6 animate-slide-up space-y-6" style={{ animationDelay: "0.3s" }}>
-              {/* Stats cards grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {stats.map((stat, i) => (
-                  <TooltipProvider key={i}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Card className="border-2 border-primary/10 bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm hover:scale-105 transition-all cursor-default group">
-                          <CardContent className="p-4 text-center space-y-1">
-                            <stat.icon className={`w-5 h-5 mx-auto mb-2 ${stat.color} group-hover:scale-110 transition-transform`} />
-                            <p className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                              {stat.value}
-                            </p>
-                            <p className="text-xs text-muted-foreground font-display">
-                              {stat.label}
-                            </p>
-                          </CardContent>
-                        </Card>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="font-display">Real user data • Updated daily</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                ))}
-              </div>
-
               {/* Testimonials with enhanced cards */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
