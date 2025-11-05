@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useGender } from "./GenderProvider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Progress } from "@/components/ui/progress";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Separator } from "@/components/ui/separator";
+import { Progress } from "@/components/ui/progress";
 import { MadLibsPrompt } from "./MadLibsPrompt";
 import { WardrobeCard } from "./WardrobeCard";
-import { ArrowRight, Sparkles, Zap, Users, TrendingUp, Heart, Clock, ShoppingBag, Star, Award, CheckCircle2, Shirt } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Heart, Award, CheckCircle2 } from "lucide-react";
 import outfit1 from "@/assets/outfit-1.jpg";
 import outfit2 from "@/assets/outfit-2.jpg";
 import outfit3 from "@/assets/outfit-3.jpg";
@@ -32,77 +30,6 @@ export const Hero = () => {
     style: ""
   });
 
-  const femaleTestimonials = [
-    { 
-      name: "Sarah Chen", 
-      role: "Fashion Blogger", 
-      initial: "SC", 
-      avatar: "", 
-      quote: "Went from 'I have nothing to wear' to 'OMG I forgot I had this!' in like 2 days",
-      stat: "87 new outfits discovered"
-    },
-    { 
-      name: "Mike Jordan", 
-      role: "Creative Director", 
-      initial: "MJ", 
-      avatar: "", 
-      quote: "My closet used to stress me out. Now it's literally my favorite place",
-      stat: "Saves 2.5 hrs/week"
-    },
-    { 
-      name: "Emma Rodriguez", 
-      role: "Professional Stylist", 
-      initial: "ER", 
-      avatar: "", 
-      quote: "I do this for a living and I'm mind-blown. The AI gets style better than most humans",
-      stat: "Uses it for clients"
-    },
-    { 
-      name: "Alex Kim", 
-      role: "Tech Entrepreneur", 
-      initial: "AK", 
-      avatar: "", 
-      quote: "Finally stopped wearing the same 3 outfits on repeat. Game changer",
-      stat: "3.2x more variety"
-    }
-  ];
-
-  const maleTestimonials = [
-    { 
-      name: "Marcus Johnson", 
-      role: "Tech Lead", 
-      initial: "MJ", 
-      avatar: "", 
-      quote: "No more 'do these pants match this shirt?' mornings. Just confidence.",
-      stat: "95 new combinations"
-    },
-    { 
-      name: "David Park", 
-      role: "Creative Director", 
-      initial: "DP", 
-      avatar: "", 
-      quote: "Finally using my entire wardrobe instead of the same 5 shirts on rotation",
-      stat: "Saves 3 hrs/week"
-    },
-    { 
-      name: "James Martinez", 
-      role: "Fitness Coach", 
-      initial: "JM", 
-      avatar: "", 
-      quote: "The AI actually gets my style. Even helps me dress for different occasions",
-      stat: "Uses it daily"
-    },
-    { 
-      name: "Ryan Lee", 
-      role: "Entrepreneur", 
-      initial: "RL", 
-      avatar: "", 
-      quote: "Game changer. Went from basic to actually having style in weeks",
-      stat: "4x outfit variety"
-    }
-  ];
-
-  const testimonials = gender === "female" ? femaleTestimonials : maleTestimonials;
   const outfits = gender === "female" 
     ? [outfit1, outfit2, outfit3] 
     : [maleOutfit1, maleOutfit2, maleOutfit3];
@@ -257,7 +184,6 @@ export const Hero = () => {
               setSelectedPrompt={setSelectedPrompt}
             />
 
-
             {/* CTA buttons - premium with tooltips */}
             <TooltipProvider>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -299,128 +225,6 @@ export const Hero = () => {
                 </Tooltip>
               </div>
             </TooltipProvider>
-
-            {/* Social proof - ultra premium */}
-            <div className="pt-6 animate-slide-up space-y-6" style={{ animationDelay: "0.3s" }}>
-              {/* Testimonials with enhanced cards */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-4">
-                    {testimonials.map((person, i) => (
-                      <HoverCard key={i} openDelay={200}>
-                        <HoverCardTrigger>
-                          <Avatar className="w-14 h-14 border-4 border-background cursor-pointer hover:scale-125 hover:z-10 transition-all shadow-lg">
-                            <AvatarFallback className="bg-gradient-to-br from-primary via-accent to-primary text-background font-display font-bold text-lg">
-                              {person.initial}
-                            </AvatarFallback>
-                          </Avatar>
-                        </HoverCardTrigger>
-                        <HoverCardContent className="w-96 border-2 border-primary/20 bg-gradient-to-br from-background to-secondary/30 backdrop-blur-xl">
-                          <div className="space-y-3">
-                            <div className="flex items-start justify-between">
-                              <div>
-                                <h4 className="font-display font-bold text-lg">{person.name}</h4>
-                                <p className="text-sm text-muted-foreground">{person.role}</p>
-                              </div>
-                              <div className="flex gap-0.5">
-                                {[...Array(5)].map((_, i) => (
-                                  <Star key={i} className="w-4 h-4 text-accent fill-accent" />
-                                ))}
-                              </div>
-                            </div>
-                            <Separator />
-                            <p className="text-sm leading-relaxed italic text-foreground/90">
-                              "{person.quote}"
-                            </p>
-                            <div className="flex items-center gap-2 pt-2">
-                              <Badge variant="secondary" className="text-xs">
-                                <TrendingUp className="w-3 h-3 mr-1" />
-                                {person.stat}
-                              </Badge>
-                            </div>
-                          </div>
-                        </HoverCardContent>
-                      </HoverCard>
-                    ))}
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-foreground font-display font-bold text-lg flex items-center gap-2">
-                      <Heart className="w-5 h-5 text-primary fill-primary animate-pulse" />
-                      12,500+ users loving it
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-0.5">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-accent fill-accent" />
-                        ))}
-                      </div>
-                      <span className="text-sm text-foreground/70 font-display">4.9/5 from real people</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Interactive tabs with better design */}
-              <Card className="border-2 border-primary/10 bg-gradient-to-br from-background to-secondary/20 backdrop-blur-sm">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg font-display">Why people can't stop talking about it</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Tabs defaultValue="time" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 bg-secondary/50 p-1">
-                      <TabsTrigger value="time" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
-                        <Clock className="w-4 h-4 mr-2" />
-                        Time
-                      </TabsTrigger>
-                      <TabsTrigger value="outfits" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
-                        <ShoppingBag className="w-4 h-4 mr-2" />
-                        Variety
-                      </TabsTrigger>
-                      <TabsTrigger value="confidence" className="font-display data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-background">
-                        <Award className="w-4 h-4 mr-2" />
-                        Confidence
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="time" className="space-y-4 mt-4">
-                      <div className="space-y-2">
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">2.5hrs</span>
-                          <span className="text-foreground/70 text-lg">saved every single week</span>
-                        </div>
-                        <Progress value={85} className="h-2" />
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          That's <strong className="text-foreground">130 hours per year</strong> back in your life. Binge Netflix, learn guitar, sleep in—whatever you want.
-                        </p>
-                      </div>
-                    </TabsContent>
-                    <TabsContent value="outfits" className="space-y-4 mt-4">
-                      <div className="space-y-2">
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">3.2x</span>
-                          <span className="text-foreground/70 text-lg">more outfit combinations</span>
-                        </div>
-                        <Progress value={75} className="h-2" />
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Stop wearing the same 5 outfits. Rediscover forgotten pieces and create <strong className="text-foreground">combinations you'd never think of</strong>.
-                        </p>
-                      </div>
-                    </TabsContent>
-                    <TabsContent value="confidence" className="space-y-4 mt-4">
-                      <div className="space-y-2">
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-5xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">94%</span>
-                          <span className="text-foreground/70 text-lg">feel way more confident</span>
-                        </div>
-                        <Progress value={94} className="h-2" />
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          When you look good, you feel unstoppable. Our users report <strong className="text-foreground">major confidence boosts</strong> in work, dating, and life.
-                        </p>
-                      </div>
-                    </TabsContent>
-                  </Tabs>
-                </CardContent>
-              </Card>
-            </div>
           </div>
 
           {/* Right side - Premium visual showcase */}
@@ -451,28 +255,29 @@ export const Hero = () => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Badge className="absolute -top-6 -right-6 bg-gradient-to-r from-accent to-primary text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl rotate-12 border-3 border-background hover:scale-110 hover:rotate-6 transition-all cursor-default animate-bounce-in">
-                      <Sparkles className="w-4 h-4 mr-1 inline animate-pulse" />
+                    <Badge className="absolute -top-6 -right-6 bg-gradient-to-br from-primary to-accent text-background border-0 px-6 py-3 text-base font-display shadow-2xl animate-float cursor-default hover:scale-110 transition-transform">
+                      <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
                       AI Powered
                     </Badge>
                   </TooltipTrigger>
-                  <TooltipContent side="left">
-                    <p>Trained on 100K+ real outfits</p>
+                  <TooltipContent>
+                    <p>Advanced fashion AI • Learns your style</p>
                   </TooltipContent>
                 </Tooltip>
 
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Badge className="absolute -bottom-6 -left-6 bg-gradient-to-r from-primary to-accent text-background px-6 py-3 rounded-full font-display text-sm font-bold shadow-2xl -rotate-6 border-3 border-background hover:scale-110 hover:-rotate-3 transition-all cursor-default flex items-center gap-2 animate-bounce-in" style={{ animationDelay: "0.1s" }}>
-                      <Users className="w-4 h-4" />
+                    <Badge 
+                      className="absolute -bottom-6 -left-6 bg-gradient-to-br from-accent to-primary text-background border-0 px-6 py-3 text-base font-display shadow-2xl cursor-default hover:scale-110 transition-transform" 
+                      style={{ animationDelay: "1s" }}
+                    >
                       12.5K+ Users
                     </Badge>
                   </TooltipTrigger>
-                  <TooltipContent side="right">
-                    <p>Join the style revolution</p>
+                  <TooltipContent>
+                    <p>Join thousands of fashion-forward users</p>
                   </TooltipContent>
                 </Tooltip>
-
               </TooltipProvider>
             </div>
           </div>
