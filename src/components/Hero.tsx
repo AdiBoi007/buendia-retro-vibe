@@ -89,57 +89,6 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left side - Hero content */}
           <div className="space-y-6 animate-fade-in">
-            {/* Beta badge with enhanced hover */}
-            <TooltipProvider>
-              <HoverCard>
-                <HoverCardTrigger>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Badge className="mb-4 bg-gradient-to-br from-primary/90 to-accent/90 text-background border-0 px-8 py-3 text-sm font-display shadow-lg animate-bounce-in cursor-pointer hover:scale-105 transition-all duration-300 group backdrop-blur-xl rounded-full">
-                        <Sparkles className="w-4 h-4 mr-2 animate-pulse group-hover:rotate-12 transition-transform" strokeWidth={1.5} />
-                        Join 12,500+ Beta Users
-                        <Award className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" strokeWidth={1.5} />
-                      </Badge>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom" className="bg-gradient-to-br from-primary/95 to-accent/95 text-background border-0 backdrop-blur-xl rounded-2xl shadow-lg">
-                      <p className="font-display font-medium">Click for exclusive perks! 🎁</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-96 border border-foreground/5 bg-background/95 backdrop-blur-2xl rounded-3xl shadow-2xl">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <Award className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                      <h4 className="font-display font-bold text-lg">Early Access Perks</h4>
-                    </div>
-                    <Separator />
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
-                        <p className="text-sm font-medium"><strong>50% off lifetime</strong> - Lock in beta pricing forever</p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
-                        <p className="text-sm font-medium"><strong>Priority support</strong> - Direct line to our team</p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
-                        <p className="text-sm font-medium"><strong>Exclusive features</strong> - Try new AI models first</p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" strokeWidth={2} />
-                        <p className="text-sm font-medium"><strong>Beta community</strong> - Shape the future with us</p>
-                      </div>
-                    </div>
-                    <Progress value={67} className="h-1.5" />
-                    <p className="text-xs text-muted-foreground text-center font-medium">
-                      67% of beta slots filled • Join before they're gone
-                    </p>
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            </TooltipProvider>
-
             {/* Main headline - ultra premium */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] text-reveal">
               <span className="inline-block hover:scale-105 transition-transform cursor-default">
