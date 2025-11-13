@@ -7,7 +7,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-bold mb-4">Buendía</h3>
+            <h3 className="font-display text-2xl font-bold mb-4">glimpse</h3>
             <p className="font-body text-background/80 text-sm leading-relaxed">
               Your style, your wardrobe, your vision.
               <br />
@@ -77,7 +77,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-sm text-background/60">
-            © 2025 Buendía. All rights reserved.
+            © 2025 glimpse. All rights reserved.
           </p>
           <p className="font-body text-sm text-background/60 flex items-center gap-2">
             Made with <Heart className="w-4 h-4 text-accent fill-accent" /> for fashion lovers

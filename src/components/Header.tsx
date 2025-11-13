@@ -33,7 +33,7 @@ export const Header = () => {
                 <Sparkles className="w-5 h-5 text-background" />
               </div>
               <h1 className="font-display text-2xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                buendía
+                glimpse
               </h1>
               <Badge className="hidden sm:inline-flex bg-accent/10 text-accent border-accent/20 text-xs font-display">
                 Beta
